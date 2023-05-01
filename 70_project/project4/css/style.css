@@ -5,19 +5,14 @@
     padding:0;
     box-sizing: border-box;
 }
-.clearfix::after {
-    content: '';
-    clear: both;
-    display: block;
-}
 /* 공통 */
 #wrap {
+    /* 가로 가운데 맞춤 */
     width: 1200px;
-    /*  가로 가운데 맞춤 */
     margin: 0 auto;
 }
-.logo, nav, #contents div, footer div {
-    float: left;
+header, #contents, footer {
+    display: flex;
 }
 /* 헤더 */
 /* 로고 */
