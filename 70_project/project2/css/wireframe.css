@@ -1,9 +1,6 @@
 @charset "uft-8";
 
-/*  헤더 푸터 백그라운드 보더활용  플렉스 활용 */
 /* shift alt f 정렬 */
-/* css 내부스타일 */
-/* float 말고 flexbox사용 */
 
 
 /* reset */
@@ -14,29 +11,26 @@
 }
 
 
-
-
 body {
-    color: #000;
+    color: #000000;
     background: #fff;
+    border: 1px solid #000000;
 }
-
-
 
 
 a {
-    color: #000;
+    color: #000000;
 }
-
-
 
 /* 목록의 마커 제거 */
 li {
     list-style: none;
 }
 
+div {
+    border: 1px solid #000000;
 
-
+}
 
 /* header */
 header {
@@ -44,18 +38,22 @@ header {
     top: 0;
     z-index: 9999;
     width: 100%;
+    background: #fff;
     height: 54px;
-    padding:0 32px;
-    border: 1px solid black
+    padding: 0 32px;
+    border: 1px solid #000000;
 }
 
 
 .logo {
-    float: left;
+    position: absolute;
 }
+
 nav {
-    float: right;
+    display: flex;
+    justify-content: end
 }
+
 nav li {
     display: inline-block;
     margin: 16px 16px;
@@ -65,7 +63,10 @@ nav li {
 section {
     width: 1496px;
     margin: 0 auto;
+    border: 1px solid #000000;
+
 }
+
 .section {
     padding-top: 81px;
 }
@@ -75,73 +76,84 @@ section {
     padding-bottom: 16px;
     border-bottom: 1px solid #ccc;
 }
-.section h2 + p {
+
+.section h2+p {
     margin-bottom: 32px;
 }
 
 /* section1 */
+
 #main_img {
     position: relative;
 }
+
 #main_img h2 {
     position: absolute;
     left: 50%;
     top: 50%;
-    border: 1px solid black;
+    border: #000000;
+    background: #000;
     transform: translate(-50%, -50%);
     padding: 8px 24px;
-
+    color: #fff;
 }
-
-
-
-
-
 
 /* section2, 3 common */
-#menu li, #event li {
-    float: left;
-    width: 362px;
-}
-#menu ul::after, #event ul::after {
+
+#game ul::after,
+#mobile ul::after {
     content: '';
     clear: both;
     display: block;
 }
-#menu li:not(:nth-of-type(4n)), #event li:not(:nth-of-type(4n)) {
-    margin-right: 16px;
+
+#game li:not(:nth-of-type(4n)),
+#mobile li:not(:nth-of-type(4n)) {
+    margin-right: 8px;
 }
-
-
 
 
 /* section2 */
-#menu h2 {
+#game ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between
+}
+
+#game h2 {
     margin-bottom: 48px;
 }
-#menu li  h3{
+
+#game li h3 {
     position: absolute;
-    background: black;
-    color:#fff;
+    border: 1px solid #000000;
+    background: #000000;
+    color: #fff;
     padding: 8px 16px;
-   
+
 }
 
 /* section3 */
-#event li h3 {
+#mobile ul {
+    display: flex;
+    justify-content: space-between
+}
+
+#mobile li h3 {
     margin: 16px 0 8px;
 }
 
-#event li p {
+#mobile li p {
     margin: 8px 0;
 }
 
-#event li a {
-display: block;
-background: #ccc;
-text-align: center;
-padding: 8px 0;
-margin-top: 16px;
+#mobile li a {
+    display: block;
+    background: #ccc;
+    text-align: center;
+    padding: 8px 0;
+    margin-top: 16px;
+    border: 1px solid #000000;
 }
 
 /* section4 */
@@ -151,12 +163,13 @@ margin-top: 16px;
     display: block;
     padding: 0 10px;
     margin: 20px 0;
-    border: 1px solid black;
+    border: 1px solid #000000;
 }
+
 #news button {
     display: block;
-    margin: 40px 0 ;
-    background: black;
+    margin: 40px 0;
+    background: #000000;
     color: #fff;
     width: 154px;
     height: 40px;
@@ -165,9 +178,8 @@ margin-top: 16px;
 
 /* footer*/
 footer {
-   
-    border: 1px solid black;
-    color: black;
+    border: 1px solid #000000;
+    color: #000000;
     text-align: center;
     padding: 32px 0;
 }
