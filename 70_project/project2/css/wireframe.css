@@ -1,6 +1,10 @@
 @charset "uft-8";
 
 /*  헤더 푸터 백그라운드 보더활용  플렉스 활용 */
+/* shift alt f 정렬 */
+/* css 내부스타일 */
+/* float 말고 flexbox사용 */
+
 
 /* reset */
 * {
