@@ -1,8 +1,5 @@
 @charset "uft-8";
 
-/* shift alt f 정렬 */
-
-
 /* reset */
 * {
     margin: 0;
@@ -29,7 +26,7 @@ li {
 
 div {
     border: 1px solid #000000;
-
+    vertical-align: bottom;
 }
 
 /* header */
