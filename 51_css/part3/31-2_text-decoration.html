@@ -1,25 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML+CSS</title>
     <style>
-        /* .tdn에 텍스트 장식을 제거해 보세요. */
+        a {
+            color: #999;
+        }
 
+        a:hover {
+            color: #333;
+            text-decoration: underline;
+        }
+
+        /* 
+            text-decoration-line: 라인종류;
+            값: none, underline, overline, line-through
+            text-decoration-thickness: 두께;
+            값: auto, px(em, rem), %
+            text-decoration-style: 스타일;
+            값: solid, dotted, dashed, double, wavy
+            text-decoration-color: 현재색;
+
+            (속기형)
+            text-decoration: line thickness style color;
+        */
+
+        /* .tdn에 텍스트 장식을 제거해 보세요. */
+        .tdn {
+            text-decoration: none;
+            text-decoration-style: solid;
+            text-decoration-color: black;
+            text-decoration-thickness: auto;
+            /* ver CSS4 */
+
+            text-decoration: none;
+        }
 
         /* .tdu에 텍스트 밑줄을 지정해 보세요. */
+        .tdu {
+            text-decoration-line: underline;
+            text-decoration-style: dashed;
+            text-decoration-color: red;
+            text-decoration-thickness: 5px;
 
+            text-decoration: underline 5px dashed red;
+        }
 
         /* .tdo에 텍스트 윗줄을 지정해 보세요. */
-
+        .tdo {
+            text-decoration: overline;
+            text-decoration-style: dotted;
+        }
 
         /* .tdl에 텍스트 취소선을 지정해 보세요. */
-
-        
+        .tdl {
+            text-decoration: line-through;
+            text-decoration-style: wavy;
+        }
     </style>
 </head>
+
 <body>
     <h1>텍스트 장식(꾸밈)</h1>
     <p class="tdn">text-decoration: none;</p>
@@ -31,4 +75,5 @@
     <p class="tdl">text-decoration: underline;</p>
     <a href="#" class="tdl">text-decoration: line-through;</a>
 </body>
+
 </html>

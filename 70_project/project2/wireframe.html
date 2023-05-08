@@ -33,28 +33,37 @@
 
         /* header */
         header {
+            display: flex;
             position: fixed;
-            top: 0;
-            z-index: 9999;
             width: 100%;
+            z-index: 9999;
+            top: 0;
             background: #fff;
             height: 54px;
             padding: 0 32px;
             border: 1px solid #000000;
         }
 
-        .logo {
-            position: absolute;
-        }
+       .logo {
+        text-decoration: none;
+       }
 
         nav {
             display: flex;
-            justify-content: end;
+            width: 100%;
+            justify-content: space-between;
+            align-self: center;
+            padding: 8px 16px;
         }
-
+        nav ul {
+            display: flex;
+            flex-wrap: wrap;
+            align-self: center;
+        }
         nav li {
-            display: inline-block;
-            margin: 16px 16px;
+            width: auto;
+            padding: 8px 16px;
+            height: 40px;
         }
 
         /* section common */
