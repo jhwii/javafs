@@ -5,3 +5,120 @@
     padding: 0;
     box-sizing: border-box;
 }
+li { 
+    list-style: none;
+}
+.wrap {
+    width: 1496px;
+    margin: 0 auto;
+}
+header {
+    display: flex;
+    width: 100%;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    height: 50px;
+    box-shadow: 0px 2px rgba(136, 136, 136, 0,5);
+}
+nav {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-self: center;
+    background: lightgray;
+}
+h1 {
+    width: auto;
+    height: 50px;
+    padding: 4px 8px;
+}
+h1:hover {
+    background: #ccc;
+}
+a {
+    color: black;
+}
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-self: center;
+}
+nav li {
+    width: auto;
+    padding: 8px 16px;
+    height: 40px;
+    color: black;
+}
+nav li:hover {
+    background: #ccc;
+}
+.logo {
+    color: black;
+    text-decoration: none;
+}
+.main_img {
+    position: relative;
+}
+.name {
+font-size: 56px;
+color: lightcyan;
+position: absolute;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+}
+#game ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+#game li {
+    margin-top: 8px;
+}
+#game div {
+    position: absolute;
+    background: black;
+    width: 135px;
+    height: 40px;
+    color: white;
+    text-align: center;
+    padding-top: 8px;
+}
+#game img {
+    width: 365px;
+    height: 244px;
+    border: 3px solid black;
+}
+#mobile ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+#mobile li {
+    margin-top: 8px;
+}
+#mobile img {
+    width: 365px;
+    height: 244px;
+    border: 3px solid black;
+}
+form h3 {
+    margin-bottom: 8px;
+}
+input {
+    width: 1496px;
+    height: 40px;
+    border: 1px solid #ccc;
+    margin: 8px 0px;
+}
+textarea {
+    width: 1496px;
+    height: 64px;
+    border: 1px solid #ccc;
+    margin: 8px 0px;
+}
+form button {
+    background: #ccc;
+    color: white;
+}
