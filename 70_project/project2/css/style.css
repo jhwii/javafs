@@ -12,17 +12,22 @@
     width: 1496px;
     margin: 0 auto;
 }
+
 @font-face {
     font-family: 'Stylish-Rgegular';
     src: url('/70_project/font/Stylish-Regular.ttf');
 }
-html, body {
-    font-family: 'Stylish-Rgegular'; 
+
+html,
+body {
+    font-family: 'Stylish-Rgegular';
 }
+
 html {
     font-size: 10px;
     scroll-behavior: smooth;
 }
+
 /* 전체 글꼴/줄간격 */
 body {
     color: #111;
@@ -54,42 +59,52 @@ header {
     background: #fff;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.16), 0px 2px 10px rgba(0, 0, 0, 0.12);
 }
+
 .logo {
     color: black;
     text-decoration: none;
 }
+
 h1 {
     width: auto;
     height: 54px;
     font-size: 2.8rem;
 }
+
 h1:hover {
     background: #ccc;
 }
+
 a {
+    font-size: 24px;
     color: #000;
     text-decoration: none;
 }
+
 nav {
     display: flex;
     width: 100%;
     justify-content: space-between;
     align-self: center;
 }
+
 nav ul {
     display: flex;
     flex-wrap: wrap;
     align-self: center;
 }
+
 nav li {
     width: auto;
     padding: 8px 32px;
-    height: 40px;
+    height: 56px;
     color: black;
 }
+
 nav li:hover {
     background: #ccc;
 }
+
 /* section common */
 section h2 {
     margin-top: 48px;
@@ -102,7 +117,12 @@ section h2 {
 .main_img {
     position: relative;
 }
-
+.mini {
+    display: inline-block;
+    margin-left: 100%;
+    width: 21px;
+    height: 28px;
+}
 .name {
     font-size: 48px;
     color: white;
@@ -119,6 +139,7 @@ section h2 {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    overflow: hidden;
 }
 
 #game li {
@@ -133,6 +154,12 @@ section h2 {
     color: white;
     text-align: center;
     padding-top: 8px;
+    overflow: hidden;
+}
+
+#game li:hover {
+    transition: 0.3s;
+    transform: scale(1.2);
 }
 
 #game img {
@@ -167,6 +194,12 @@ h2 {
 #mobile li {
     margin-top: 8px;
     padding: 32px 0;
+    overflow: hidden;
+}
+/* 이미지 확대 */
+#mobile img:hover {
+    transition: 0.3s;
+    transform: scale(1.2);
 }
 
 #mobile li div {
