@@ -117,12 +117,14 @@ section h2 {
 .main_img {
     position: relative;
 }
+
 .mini {
     display: inline-block;
     margin-left: 100%;
     width: 21px;
     height: 28px;
 }
+
 .name {
     font-size: 48px;
     color: white;
@@ -196,6 +198,7 @@ h2 {
     padding: 32px 0;
     overflow: hidden;
 }
+
 /* 이미지 확대 */
 #mobile img:hover {
     transition: 0.3s;
