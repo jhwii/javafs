@@ -14,13 +14,13 @@
 }
 
 @font-face {
-    font-family: 'Stylish-Rgegular';
-    src: url('/70_project/font/Stylish-Regular.ttf');
+    font-family: 'Stylish-Regular';
+    src: url('../font/Stylish/Stylish-Regular.ttf');
 }
 
 html,
 body {
-    font-family: 'Stylish-Rgegular';
+    font-family: 'Stylish-Regular';
 }
 
 html {
