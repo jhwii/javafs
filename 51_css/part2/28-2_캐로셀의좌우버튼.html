@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML+CSS</title>
     <style>
-       /* body * {outline: 1px solid red;} */
+       /* body * {outline: 1px solid red;
+        } */
        .carousel { 
         position: relative;
         height: 700px;
@@ -15,13 +16,13 @@
        /* position: absolute로 지정하면 width: 콘텐츠 크기 */
        /* position: relative로 지정하면 width: 100% */
        /* position: relative; 자기자신 자리는 차지하고 있다. */
+       /* absolute와 fixed는 그렇지 않다. */
        .controls {
         position: absolute;
         width: 100%;
         height: 78px;
         top: 50%;
         transform: translateY(-50%);
-
        }
         .controls a {
         position: absolute;
@@ -30,22 +31,24 @@
        /* clac(값1 연산자 값2) */
        /* 산술 연산자: +, -, *(곱하기), /(나누기) */
        /* 연산자와 피연산자(값1, 값2) 사이는 한 칸 공백으로 띄운다. */
-       #prev {left: calc(50% - 480px);}
-       #next {left: calc(50% + 400px);}
+
+       #prev {left: calc(50% - 500px);}
+       #next {left: calc(50% + 500px);}
 
        .pager {
         position: absolute;
+        bottom: 100px;
         left: 50%;
         transform: translatex(-50%);
-        bottom: 100px;
        }
        .pager a {
+        background: black;
         display: inline-block;
+        border-radius: 50%;
         width: 12px;
         height: 12px;
         margin: 0 8px;
-        border-radius: 50%;
-        background: black;
+
         /* 짧은 텍스트를 숨기기 */
         text-indent: -9999em;
        }
