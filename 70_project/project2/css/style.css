@@ -13,11 +13,6 @@
     margin: 0 auto;
 }
 
-@font-face {
-    font-family: 'Stylish-Regular';
-    src: url('../font/Stylish-Regular.ttf');
-}
-
 html,
 body {
     font-family: 'Stylish-Regular';
@@ -34,6 +29,11 @@ body {
     background: #fff;
     font-size: 1.5rem;
     line-height: 1.8;
+}
+
+@font-face {
+    font-family: 'Stylish-Regular';
+    src: url('../font/Stylish-Regular.ttf');
 }
 
 /* 이미지 조정 */
