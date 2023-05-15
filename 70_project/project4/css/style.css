@@ -1,7 +1,8 @@
 @charset "utf-8";
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap');
 
 /* ctrl+f: 찾기 */
+/* 색상은 16진수 */
 
 /* 초기화 */
 * {
@@ -9,15 +10,23 @@
     padding:0;
     box-sizing: border-box;
 }
+html {
+    font-size: 10px;
+}
 li {
     list-style: none;
 }
-
 img {
     width: 100%;
 }
 body {
-    font-family: 'Noto Sans KR', sans-serif;
+    font: 1.5rem/1.8 'Noto Sans KR', sans-serif;
+    color: #333333;
+}
+/* 글자 색깔은 a태그가 상속받지 않는다. */
+a {
+    text-decoration: none;
+    color: #777;
 }
 /* 공통 */
 #wrap {
@@ -29,22 +38,42 @@ header, #contents, footer {
     display: flex;
 }
 /* 헤더 */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    height: 100px;
+}
+
 /* 로고 */
 .logo {
     width: 200px;
-    height: 100px;
-    background: lightpink;
+    background: #ffb6c1;
 }
 /* 내비게이션 */
-nav {
-    width: 1000px;
-    height: 100px;
-    background: lightsalmon;
+
+/* main을 flex 처리해서 li가 가로배치 */
+nav .main {
+    display: flex;
+}
+/* >를 사용하지 않으면 sub도 포함 */
+nav li {
+    width: 150px;
+    margin-left: 8px;
+    text-align: center;
+    background: #333333;
+}
+nav .main > li > a {
+    font-size: 1.8rem;
+    color: #fff;
+}
+nav .sub {
+    display: none;
 }
 /* 슬라이드 */
 #slide {
     height: 300px;
-    background: lightcoral;
+    background: #f08080;
     overflow: hidden;
 }
 #slide ul {
@@ -68,25 +97,73 @@ nav {
 #slide img {
    height: 300px;
 }
+
 /* 메인 콘텐츠 */
-#contents div {
+#contents > div {
     width: 400px;
     height: 200px;
 }
+/* 탭 메뉴 */
 .tabs {
-    background: gold;
+    padding: 24px 24px 24px 0;
 }
+.tabs input, .tabs > div{
+    display: none;
+}
+#btn1:checked ~ #tab1, #btn2:checked ~ #tab2 {
+    display: block;
+}
+/* 탭 메뉴 - 제목/버튼 */
+.tabs label {
+    display: inline-block;
+    padding: 4px 16px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    font-size: 1.6rem;
+    font-weight: 500;
+    background:#333333;
+    color: #fff;
+}
+/* +는 바로밑(인접형제) ~은 모든 형제 */
+#btn1:checked + label, #btn2:checked + label {
+background :#add8e6;
+color: #333333;
+}
+/* 탭 메뉴 - 공지사항 */
+#tab1 li {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px dotted #ccc;
+}
+#tab1 a {
+    width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    /* 말줄임 ...효과 */
+    text-overflow: ellipsis;
+}
+#tab1 a:hover {
+    color: #333;
+}
+/* 탭 메뉴 - 갤러리 */
+#tab2 a {
+    display: inline-block;
+    width: 110px;
+    margin-right: 13px;
+}
+/* 배너 */
 .banner {
-    background: lavender;
+    background: #e6e6fa;
 }
+/* 바로가기 */
 .shortcut {
-    background: greenyellow;
+    background: #adff2f;
 }
 /* 푸터 */
 .b_logo {
     width: 200px;
     height: 100px;
-    background: firebrick;
+    background: #b42222;
 }
 .addr {
     width: 800px;
