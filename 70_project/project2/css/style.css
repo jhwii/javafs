@@ -1,5 +1,4 @@
 @charset "utf-8";
-
 /* 외부폰트 사용 */
 @import url('https://fonts.googleapis.com/css2?family=Stylish&display=swap');
 
@@ -8,7 +7,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Stylish', sans-serif;
 }
 
 /* 전체 간격 조정 */
@@ -28,6 +26,7 @@ body {
     background: #fff;
     font-size: 1.5rem;
     line-height: 1.8;
+    font-family: 'Stylish', sans-serif;
     
 }
 
