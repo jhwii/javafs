@@ -26,20 +26,22 @@ li {
 }
 img {
     vertical-align: top;
+    border: 1px solid black;
 }
-div {
+/* div {
     border: 1px solid #000000;
-}
+} */
 /* header */
 header {
     position: fixed;
-    top: 0;
     z-index: 9999;
+    top: 0;
     width: 100%;
     background: #fff;
     height: 54px;
     padding: 0 32px;
     border: 1px solid #000000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.12);
 }
 .logo {
     position: absolute;
@@ -84,13 +86,13 @@ section {
     padding: 8px 24px;
     color: #fff;
 }
-/* section2, 3 common */
-/* #game ul::after,
+/* section2, 3 common  */
+ #game ul::after,
 #mobile ul::after {
     content: '';
     clear: both;
     display: block;
-} */
+}
 #game li:not(:nth-of-type(4n)),
 #mobile li:not(:nth-of-type(4n)) {
     margin-right: 8px;
