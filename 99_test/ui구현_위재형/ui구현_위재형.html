@@ -12,11 +12,7 @@
     padding: 0;
     box-sizing: border-box;
 }
-body {
-    color: #000000;
-    background: #fff;
-    border: 1px solid #000000;
-}
+
 a {
     color: #000000;
 }
@@ -28,9 +24,7 @@ img {
     vertical-align: top;
     border: 1px solid black;
 }
-/* div {
-    border: 1px solid #000000;
-} */
+
 /* header */
 header {
     position: fixed;
@@ -48,7 +42,10 @@ header {
 }
 nav {
     display: flex;
-    justify-content: end;
+    width: 100%;
+    justify-content: space-between;
+    align-self: center;
+    padding: 8px 16px;
 }
 nav li {
     display: inline-block;
@@ -86,23 +83,12 @@ section {
     padding: 8px 24px;
     color: #fff;
 }
-/* section2, 3 common  */
- #game ul::after,
-#mobile ul::after {
-    content: '';
-    clear: both;
-    display: block;
-}
-#game li:not(:nth-of-type(4n)),
-#mobile li:not(:nth-of-type(4n)) {
-    margin-right: 8px;
-}
 /* section2 */
-#game ul {
+/* #game li {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between
-}
+} */
 #game h2 {
     margin-bottom: 48px;
 }
