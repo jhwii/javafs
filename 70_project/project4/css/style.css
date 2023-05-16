@@ -1,8 +1,10 @@
 @charset "utf-8";
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
 
 /* ctrl+f: 찾기 */
 /* 색상은 16진수 */
+/* font-awesome은 라이브러리를 연결해야 한다. */
 
 /* 초기화 */
 * {
@@ -48,10 +50,9 @@ header {
 /* 로고 */
 .logo {
     width: 200px;
-    background: #ffb6c1;
 }
-/* 내비게이션 */
 
+/* 내비게이션 */
 /* main을 flex 처리해서 li가 가로배치 */
 nav .main {
     display: flex;
@@ -99,6 +100,10 @@ nav .sub {
 }
 
 /* 메인 콘텐츠 */
+#contents {
+    display: flex;
+    padding: 8px 0;
+}
 #contents > div {
     width: 400px;
     height: 200px;
@@ -160,18 +165,42 @@ color: #333333;
     background: #adff2f;
 }
 /* 푸터 */
-.b_logo {
-    width: 200px;
-    height: 100px;
-    background: #b42222;
+footer {
+    display: flex;
+    color: #777;
+    padding-left: 350px;
+    background: #000000 url('../images/logo2.png') no-repeat 30px 50%; 
+   
 }
 .addr {
-    width: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 1000px;
     height: 100px;
-    background: blueviolet;
 }
 .sns {
-    width: 200px;
+    display: flex;
+    align-items: center;
+    font-size: 3rem;
+    /* flex: glow shrick basis */
+    flex: 0 0 200px;
     height: 100px;
-    background: aquamarine;
+}
+.sns a {
+    color: #777;
+    margin: 0 8px;
+    transition: 0.3s;
+}
+.sns a:hover {
+    transform: scale(1.2 1.2);
+}
+.sns a:nth-of-type(1):hover {
+    color: #395498;
+}
+.sns a:nth-of-type(2):hover {
+    color: #1c9cea;
+}
+.sns a:nth-of-type(3):hover {
+    color: #f60065;
 }
