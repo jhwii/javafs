@@ -3,11 +3,17 @@ html {
     font-size: 10px;
 }
 body {
-    font-size: 1.5rem;
-    line-height: 1.8;
+    font: 1.5rem/1.8 verdana, sans-serif;
+    color: #333;
 }
-h1 {
-    font-size: 3.2rem;
+.logo {
+    font-size: 1.5rem;
+    font-weight: normal;
+    letter-spacing: 4px;
+}
+h2, h3 {
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: 400;
 }
 h2 {
     font-size: 2.4rem;
