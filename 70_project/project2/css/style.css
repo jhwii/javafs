@@ -228,8 +228,8 @@ nav {
     background: #f0808080;
 }
 
-.map {
-    height: 42vw;
+#contact .map {
+    height: 185px;
 }
 
 /* 푸터 */
@@ -237,6 +237,7 @@ footer {
     color: #777;
     background: #000;
     text-align: center;
+    margin-top: 8px;
     padding: 30px;
 }
 
@@ -265,9 +266,9 @@ footer span:nth-of-type(2) {
     }
 
     nav ul li:not(:first-of-type) {
-        margin-left: 48px;
+        margin-left: 36px;
     }
-
+    
     nav span {
         display: block;
         text-indent: -999em;
@@ -276,13 +277,18 @@ footer span:nth-of-type(2) {
         width: 0;
         background: #a9a9a9;
     }
-
+    
     li:hover span {
         width: 100%;
     }
-
+    /* 메인타이틀 */
+    #main_img span {
+        display: inline-block;
+        margin-left: 16px;
+    }
+    
     /* 섹션2~4 공통 */
-
+    
     .section ul {
         display: flex;
         flex-wrap: wrap;
@@ -299,28 +305,53 @@ footer span:nth-of-type(2) {
         flex-direction: column;
         justify-content: space-between;
     }
+
+    /* 푸터 */
+    footer span:nth-of-type(1),
+    footer span:nth-of-type(3) {
+        display: inline-block;
+    }
+    footer span:nth-of-type(2) {
+        display: none;
+    }
 }
 
 /* 992이상 */
 @media (min-width:992px) {
 
+    #main_img {
+        max-width: 1496px;
+        margin: 0 auto;
+    }
     .section li {
         width: calc(25% - 8px);
-        max-width: 362px;
     }
 
-    #main_img h2 {
-        font-size: 4vw;
-    }
-
-    #main_img h2 span {
-        display: none;
+    /* 메인타이틀 */
+    #main_img span {
+        display: inline-block;
+        margin-left: 16px;
     }
 
     /* 섹션 */
     .section {
-        width: 1496px;
+        max-width: 1496px;
         margin: 0 auto;
-        padding: 81px 0 0;
+    }
+    #contact .map {
+        height: 845px;
+    }
+    /* 푸터 */
+    footer span:nth-of-type(1),
+    footer span:nth-of-type(3) {
+        display: inline-block;
+    }
+    footer span:nth-of-type(2) {
+        display: none;
+    }
+}
+@media (min-width:1572px) {
+    .section {
+        padding: 81px 30px 0;
     }
 }
