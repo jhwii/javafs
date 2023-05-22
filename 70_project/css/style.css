@@ -6,8 +6,8 @@
 /* header */
 header {
     position: fixed;
-    width: 100%;
     z-index: 9999;
+    width: 100%;
 }
 
 header ul {
@@ -111,12 +111,15 @@ section h2+p {
 .photo {
     width: 425px;
 }
+
 .photo img {
     margin-top: 54px;
 }
+
 .photo b {
-    margin: 8px;
+    margin-left: 8px;
 }
+
 /* 섹션2 - 스킬 */
 #about h3 {
     margin: 54px 0;
@@ -177,11 +180,25 @@ section h2+p {
 */
 #portfolio ul {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 #portfolio li {
     width: 231px;
     height: 162px;
+    margin-bottom: 12px;
+    overflow: hidden;
+}
+
+#portfolio .moreBtn {
+    margin-top: 64px;
+    text-align: center;
+}
+
+#portfolio .moreBtn a {
+    padding: 12px 24px;
+    background: #f1f1f1;
 }
 
 /* section4 */
@@ -189,6 +206,45 @@ section h2+p {
     background-image: url(../images/parallax3.jpg);
 }
 
+#contact .container {
+    display: flex;
+}
+
+#map {
+    flex: 0 0 330px;
+    height: 160px;
+    margin-right: 30px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+#contact address i {
+    margin-right: 20px;
+}
+#contact address + p {
+    margin: 16px 0 ;
+}
+#contact form {
+    text-align: right;
+}
+#contact [name] {
+    width: 292px;
+    height: 44px;
+    padding-left: 8px;
+}
+#contact [name="user_name"] {
+    margin-right: 11px;
+}
+
+#contact [name*="message"] {
+    width: 600px;
+    margin: 16px 0;
+}
+#contact button {
+    width: 160px;
+    height: 44px;
+    color: #fff;
+    background: #000;
+}
 /* footer */
 /* 인라인 요소를 가운데배치 하는게 text-align center */
 footer {
