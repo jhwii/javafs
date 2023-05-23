@@ -23,11 +23,23 @@
             함수 호출
                 함수명();
         */
-
+        /*
+            함수: ten()
+            변수: i
+            제어문: for
+            메서드: write()
+        */       
         // 1부터 10까지 출력
+        let i = 0;       
 
-
-    </script>
+        function ten() {
+            i++;
+            if (i >= 11) return; 
+            document.write(i, '<br>');
+            ten();
+        }   
+        ten();
+        </script>
 </body>
 
 </html>
