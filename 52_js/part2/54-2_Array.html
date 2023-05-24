@@ -28,11 +28,17 @@
         document.write(greenArr.splice(1, 2, '서초', '역삼'), '<br>');
         document.write(greenArr, '<br>');
         
-        let date1 = greenArr.pop();
-        let date2 = greenArr.shift();
-        document.write(date1, '<br>');
-        document.write(date2, '<br>');
+        let data1 = greenArr.pop();
+        let data2 = greenArr.shift();
+        document.write(data1, '<br>');
+        document.write(data2, '<br>');
         document.write(greenArr, '<br>');
+
+        yellowArr.push(data1);
+        document.write(yellowArr, '<br>');
+        yellowArr.unshift(data2)
+        document.write(yellowArr, '<br>');
+
 
 
         // let numArr = [70, 3, 1000, 500];

@@ -50,6 +50,7 @@
             */
             
             // 변수
+            const imgTag = document.getElementById('photo'); 
             let num = 1;
 
             // 함수
@@ -64,10 +65,9 @@
                 if (num === 1) num = 11;
                 num--;
             }
-            const imgTag = document.getElementById('photo'); 
             imgTag.setAttribute('src', '../assets/pic_' + num + '.jpg');
-        }   
             document.write(num);
+        }   
 
             //  num은 전역 변수
             // let num = 1;
