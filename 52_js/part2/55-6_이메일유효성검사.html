@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML+JS</title>
+</head>
+
+<body>
+    <h1>문자열 객체</h1>
+    <script>
+        /*  
+            indexOf('찾을문자'): 객체의 왼쪽부터 문자열을 찾아 최초 일치하는 index 번호 반환 (없으면 -1)            
+            length: 문자열의 문자 총 개수 반환
+        */
+        
+        /* 
+            이메일 주소를 입력받아 유효성 검사를 하시오.
+            형식: id@naver.com
+
+            변수: userEmail, arrUrl, chk1, chk2
+            제어문: if, if ~ else, for
+            메서드: prompt(), indexOf(), alert(), write()
+        */
+        // 변수 선언
+        let chk1 = false, chk2 = false;    /* false에서 true로 바뀌기 때문에 let씀 */
+        const arrUrl = ['.com', '.co.kr', '.net', '.or.kr', '.go.kr'];    /* arrUrl 값이 안바뀜 */
+
+        // 입력
+        const userEmail = prompt('이메일 주소를 입력하세요');       /* userEmail 값이 안바뀜 */
+
+        // 처리
+        // 이메일에 @이 있으면 0이상 정수, 없으면 -1
+        // ck1 변수에 @가 있으면 true, 없으면 false
+        if (userEmail.indexOf('@') > 0) {      /* id를 안쓰면 0부터 시작(0이 @)이기 때문에 false */
+            chk1 = true;      /* chk1 = false 를 선언했기 때문에 else 필요없음 */
+        }       
+
+        // ck2 변수에 .com, .co.kr, ...이 있으면 true, 없으면 false
+        for (let i = 0; i <= arrUrl.length; i++) {      /* for (초깃식; 조건식; 증감식), i는 지역변수 for문 안에서 사용*/
+            if (userEmail.indexOf(arrUrl[i]) > 0)    
+            chk2 = true;
+        }   
+
+        // 출력
+        if (chk1 && chk2) {
+            document.write(userEmail);
+            location.href = 'https://naver.com';
+        } else {
+            alert('잘못 입력하셨습니다.');
+        }
+
+
+        // var userEmail = prompt('당신의 이메일을 입력하세요.', '');
+        // var arrUrl = ['.co.kr', '.go.kr', '.net', '.com', '.or.kr'];
+        
+        // var check1 = false
+        // var check2 = false
+
+        // if (userEmail.indexOf('@') > 0 ) {check1 = true;}
+
+        // for(var i = 0; i < arrUrl.length; i++) {
+        //     if (userEmail.indexOf(arrUrl[i]) > 0) {
+        //         check2 = true;
+        //     }
+        // }
+        // if (check1 && check2) {
+        //     document.write(userEmail);
+        // } else {
+        //     alert('이메일을 다시 입력하세요.');
+        // }
+    </script>
+</body>
+
+</html>
