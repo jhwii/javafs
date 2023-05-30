@@ -17,21 +17,21 @@
 
 <body>
     <ul>
-        <li>목록1</li>
+        <li id="blue">목록1</li>
         <li>목록2</li>
         <li class="red">목록3</li>
-        <li>목록4</li>
+        <li class="red">목록4</li>
     </ul>
 
     <script>
-        /* 
+        /*
             DOM(Document Object Model, 문서 객체 모델)
-                - 자바스크립트를 이용하여 엡 문서에 접근하고 제어할 수 있도록 객체를 사용해 웹 문서를 체계적으로 정리하는 방법
+                - 자바스크립트를 이용하여 웹 문서에 접근하고 제어할 수 있도록 객체를 사용해 웹 문서를 체계적으로 정리하는 방법
 
             DOM Tree
-            - 전체 문서는 문서 노드입니다.
-            - 모든 HTML 요소는 요소 노드입니다.
-            - HTML 요소 내부의 텍스트는 텍스트 노드입니다.
+            - 전체 문서는 문서 노드입니다. -> document
+            - 모든 HTML 요소는 요소 노드입니다. -> html, body, a, h1, ...
+            - HTML 요소 내부의 텍스트는 텍스트 노드입니다. -> 'My link'
             - 모든 주석은 주석 노드입니다.
 
             DOM에 접근하기
@@ -39,11 +39,39 @@
             - document.getElementsByClassName('클래스명')
             - document.getElementsByTagName('태그명')
             - document.querySeletor('선택자')
-            - document.querySeletorAll('선택자들')
+            - document.querySelectorAll('선택자들')
 
-            객체.style.속성 = 값;
+            제이쿼리
+            &('선택자')
+
+            객체.style.CSS속성 = 값;
         */
 
+        // 요소를 선택하여 글자색을 파랑, 빨강으로 지정하시오.
+        /*      
+            document.getElementById('blue');
+            document.querySelector('#blue');
+            document.getElementsByClassName('red');
+            document.getElementsByClassName('red')[0];
+            document.querySelectorAll('.red');
+            document.querySelectorAll('.red')[0];
+            document.getElementsByTagName('li');
+            document.getElementsByTagName('li')[0];
+            document.querySelectorAll('li');
+            document.querySelectorAll('li')[0]; 
+        */
+
+        // 객체.메서드();
+        /*
+            $('#blue')
+            $('.red')
+            $('li') 
+        */
+        const blue = document.getElementById('blue');
+        const red = document.querySelectorAll('.red')[0];
+
+        blue.style.color = '#0000ff';
+        red.style.color = '#ff0000';
     </script>
 </body>
 
