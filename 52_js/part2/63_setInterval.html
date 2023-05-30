@@ -17,19 +17,15 @@
     <button id="btn4">감소 정지</button>
     <script>
         /* 
-            setInterval(): 일정한 시간 간격으로 코드를 반복 실행
+            setInterval(코드, 시간): 일정한 시간 간격으로 코드를 반복 실행
             clearInterval(): setInterval() 메서드 제거
 
-            let 변수 = setInterval(function(){
+            const 변수 = setInterval(function(){
                 코드;
             }, 시간);
 
             시간은 ms(밀리초)
 
-            var 참조변수 = setInterval(function(){
-                코드;
-            }, 시간);
-            
             clearInterval(참조변수);
         */
 
@@ -39,13 +35,12 @@
             document.getElementsByTagName('태그명')
             document.querySelector('선택자')     -> 기호 구분함(., #)
             document.querySelectorAll('선택자')  -> 기호 구분함(., #)
-         
          */
-
 
         // 변수
         let increase = 0,                    /* 중간은 , 끝에서 ; */
             decrease = 1000;
+
         const btn1 = document.getElementById('btn1'),
             btn2 = document.getElementById('btn2'),
             btn3 = document.querySelector('#btn3'),
@@ -63,19 +58,16 @@
         */
         let auto1, auto2;
 
-        btn1.onclick = function (){
+        btn1.onclick = function () {
             auto1 = setInterval(add, 1000);
         };
-        btn2.onclick = function (){
+        btn2.onclick = function () {
             clearInterval(auto1);
         };
         btn3.onclick = play;
-        
-        
+
         btn4.onclick = stop;
-           
-        
-        
+
         function play() {
             auto2 = setInterval(sub, 1000);
         }
@@ -96,7 +88,6 @@
             decrease--;
             console.log(decrease);
         }
-
 
     </script>
 </body>

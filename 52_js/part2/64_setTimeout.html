@@ -22,12 +22,20 @@
             }, 시간간격(ms));
             
             clearTimeout(참조변수);
+
+            addNum을 3초후에 1증가 시킨 결과를 콘솔에 표시해 보세요.
+                - 변수: addNum
+                - 함수: add
+                - 메서드: setTimeout()
         */
 
-        var addNum = 0;
+        let addNum = 0;
 
+        setTimeout(add, 3000);
 
-
+        function add() {
+            console.log(++addNum);
+        }
     </script>
 </body>
 
