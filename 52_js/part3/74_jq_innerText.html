@@ -37,7 +37,10 @@
         /* 
             요소.text(); ~ 문자열 반환
             요소.text('문자열'); ~ 문자열 설정
+
+            $(this) ~ 이벤트가 발생한 객체
         */
+
         /* 
             목록의 텍스트(색상 이름)를 클릭하면
             아래 회색 박스에 해당 색상 이름과 이름에 해당하는
@@ -48,12 +51,13 @@
         const divTag = $('div');
 
         liTag.click(bgFn);
-        let txt = liTag.html();
-
+        
         function bgFn() {
+            let txt = $(this).html();
             divTag.html(txt);
-            divTag.css({ background: txt });
+            divTag.css({background: txt});
         }
+
     </script>
 </body>
 
