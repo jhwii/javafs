@@ -52,6 +52,7 @@
         </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script>
         /*
             요소.setAttribute('속성명', '값') ~ HTML 속성 설정
@@ -61,28 +62,14 @@
             위에 큰 이미지가 클릭한 썸네일 이미지와
             같은 이미지로 표시되도록 하시오.
             
-            선택자: #pic(큰이미지), .small(작은이미지) 
-            함수: gallery
+            선택자: #pic(큰이미지), .small(작은이미지)
+            키워드: this
         */
 
-        const bigImg = document.querySelector("#pic");
-        const thumbImg = document.querySelectorAll(".small");
-
-        // let gallery = function () {
-        //     let imgsrc = this.getAttribute('src');
-        //     bigImg.setAttribute('src', imgsrc);
-        // }
-
-        // 화살표 함수
-        let gallery = e => {
-            let imgsrc = e.target.getAttribute('src');
-            bigImg.setAttribute('src', imgsrc);
-        }
-
-        // i = 0, 1, 2
-        for (let i = 0; i < thumbImg.length; i++) {
-            thumbImg[i].onclick = gallery;
-        }
+        $('.small').click(function () {
+            let imgsrc = $(this).attr('src');
+            $('#pic').attr('src', imgsrc);
+        });
 
     </script>
 </body>
