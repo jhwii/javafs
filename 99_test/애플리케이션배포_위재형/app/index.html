@@ -70,10 +70,10 @@
         <input type="text" placeholder="비밀번호를 입력하세요." id="loginPw">
         <button>로그인</button>
         <p>아이디와 패스워드를 입력후 로그인하세요.</p>
-        <p id="member">계정이 없으신가요? <a href="../member.html">가입하기</a></p>
+        <p id="member">계정이 없으신가요? <a href="member.html">가입하기</a></p>
     </div>
-
-    <script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script> 
         // 데이터베이스(Datebase, DB)
         // location.href = 93_login.html?userId/userPw;
         let temp = location.href.split('?');
@@ -96,7 +96,7 @@
             console.log(loginId.value);
             if (userId === newId) {
                 if (userPw === newPw) {
-                    location.href = '../93_game1.html';
+                    location.href = '93_game1.html';
                 } else {
                     alert('비밀번호를 잘못입력하셨습니다.')
                     location.reload();
