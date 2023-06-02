@@ -31,6 +31,11 @@
             margin-bottom: 32px;
         }
 
+        p {
+            font-size: 14px;
+            color: red;
+        }
+
         button {
             width: 100%;
             margin: 8px 0;
@@ -43,18 +48,15 @@
 <body>
     <div id="wrap">
         <h1>모바일연애시뮬레이션</h1>
-        <img src="images/2.jpg" alt="img">
-        <h2>복학하고 처음만난 여자에게 첫질문은?</h2>
-        <button id="againBtn">너 원피스봐?</button>
-        <button id="nextBtn">너 던파해?</button>
+        <img src="images/7.jpg" alt="img">
+        <p>혐오도를 낮추는데 실패하였습니다.</p>
+        <button id="againBtn">다음생에 도전하세요</button>
+
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script>
         againBtn.onclick = function () {
-            location.href = '93_game1.html';
-        };
-        nextBtn.onclick = function () {
-            location.href = '93_game3.html';
+            location.href = 'game1.html';
         };
     </script>
 </body>
