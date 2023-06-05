@@ -33,7 +33,13 @@ header i {
 #home {
     position: relative;
     height: 930px;
-    background: url(../images/parallax1.png) no-repeat 50% 50%/ cover fixed;
+    background: url(../images/parallax1.jpg) no-repeat 50% 50%/ cover fixed;
+
+    /*background-image: url(../images/parallax1.jpg);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+    background-attachment: fixed; */
 }
 
 /* 요소를 부모 안에 정가운데 배치 */
@@ -211,25 +217,20 @@ section h2+p {
     border-radius: 5px;
     overflow: hidden;
 }
-
 #contact address i {
     margin-right: 20px;
 }
-
-#contact address+p {
-    margin: 16px 0;
+#contact address + p {
+    margin: 16px 0 ;
 }
-
 #contact form {
     text-align: right;
 }
-
 #contact [name] {
     width: 292px;
     height: 44px;
     padding-left: 8px;
 }
-
 #contact [name="user_name"] {
     margin-right: 11px;
 }
@@ -238,14 +239,12 @@ section h2+p {
     width: 600px;
     margin: 16px 0;
 }
-
 #contact button {
     width: 160px;
     height: 44px;
     color: #fff;
     background: #000;
 }
-
 /* footer */
 /* 인라인 요소를 가운데배치 하는게 text-align center */
 footer {
