@@ -24,6 +24,7 @@
             height: 400px;
             background: red;
         }
+
         div.active {
             transform: rotate(45deg);
         }
@@ -52,14 +53,15 @@
         const removeBtn = document.querySelector('.btn2');
         const box = document.querySelector('div');
 
-        addBtn.onclick = function() {
+        addBtn.onclick = function () {
             box.classList.add('on', 'active');
         }
-        removeBtn.onclick = function() {
+        removeBtn.onclick = function () {
             box.classList.remove('on', 'active');
         }
 
-      /*   const btn0 = document.querySelectorAll('button')[0];
+        /*
+        const btn0 = document.querySelectorAll('button')[0];
         const btn1 = document.querySelectorAll('button')[1];
         const box = document.querySelector('div');
 
@@ -68,7 +70,8 @@
         }
         btn1.onclick = function () {
             box.classList.remove('on');
-        } */
+        } 
+        */
     </script>
 </body>
 

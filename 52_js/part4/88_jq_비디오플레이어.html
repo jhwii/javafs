@@ -22,33 +22,16 @@
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            border: 3px solid #fff;
-            cursor: pointer;
-            text-indent: -9999em;
-        }
-
-        .btn::after {
-            content: '';
-            position: absolute;
-            left: 58%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            display: block;
-            width: 0;
-            height: 0;
-            border-top: 25px solid transparent;
-            border-left: 40px solid #fff;
-            border-bottom: 25px solid transparent;
-        }
-        .btn.on::after {
             width: 40px;
             height: 40px;
-            left: 50%;
-            border: none;
-            background: #fff;
+            cursor: pointer;
+            text-indent: -9999em;
+            background-repeat: no-repeat;
+            background-image: url(../assets/play.png);
+        }
+
+        .btn.on {
+            background: url(../assets/pause.png);
         }
     </style>
 </head>
