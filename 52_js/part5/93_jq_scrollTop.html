@@ -87,16 +87,15 @@
                 // 마우스휠을 아래로 내림
                 try {
                     let next = $(this).next().offset().top;
-                console.log(next);
-                // css({속성:값})
-                // animate({속성:값})
-                $('html').stop().animate({ scrollTop: next });
-                } catch(err) {
+                    console.log(next);
+                    // css({속성:값})
+                    // animate({속성:값})
+                    $('html').stop().animate({ scrollTop: next });
+                } catch (err) {
                     return false;
                 }
             }
         });
-
     </script>
 </body>
 
