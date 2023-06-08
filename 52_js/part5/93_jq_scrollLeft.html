@@ -11,7 +11,16 @@
             margin: 0;
         }
 
+        body {
+            overflow-y: hidden;
+        }
+
+        #fullpage {
+            display: flex;
+        }
+
         #fullpage div {
+            flex: 0 0 100%;
             height: 100vh;
         }
 
@@ -61,37 +70,29 @@
                     // 마우스휠을 아래로 내림
                 }
             });
-
-            // error(에러, bug): debugging(디버깅) ~ 에러 수정
-            // error 처리: try ~ catch ~ finally
-            try {
-                실행 코드
-            } catch(err) {
-                에러시 처리할 내용
-            }
         */
 
         $('.section').mousewheel(function (e, delta) {
             if (delta > 0) {
                 // 마우스휠을 위로 올림
                 try {
-                    let prev = $(this).prev().offset().top;
+                    let prev = $(this).prev().offset().left;
                     console.log(prev);
                     // css({속성:값})
                     // animate({속성:값})
-                    $('html').stop().animate({ scrollTop: prev });
+                    $('html').stop().animate({ scrollLeft: prev });
                 } catch (err) {
                     return false;
                 }
             } else if (delta < 0) {
                 // 마우스휠을 아래로 내림
                 try {
-                    let next = $(this).next().offset().top;
-                console.log(next);
-                // css({속성:값})
-                // animate({속성:값})
-                $('html').stop().animate({ scrollTop: next });
-                } catch(err) {
+                    let next = $(this).next().offset().left;
+                    console.log(next);
+                    // css({속성:값})
+                    // animate({속성:값})
+                    $('html').stop().animate({ scrollLeft: next });
+                } catch (err) {
                     return false;
                 }
             }
