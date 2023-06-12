@@ -56,9 +56,13 @@
     background: transparent;
 }
 
+.bx-viewport {
+    height: 100vh !important;
+}
+
 /* 페이저 */
 .bx-wrapper .bx-pager {
-    bottom: 250px;
+    bottom: 60px;
 }
 
 .bx-wrapper .bx-pager.bx-default-pager a {
