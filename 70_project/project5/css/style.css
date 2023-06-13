@@ -2,6 +2,7 @@
 @import url('reset.css');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.css');
 @import url('https://fonts.googleapis.com/css2?family=Monoton&family=Orbitron&family=Play&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
 @import url('typo.css');
 @import url('nav.css');
 @import url('layout.css');
@@ -47,6 +48,7 @@
 } */
 
 /* 섹션1 - 캐로셀 */
+/* 전체 영역 */
 /* bx-wrapper를 초기화 */
 .bx-wrapper {
     box-shadow: none;
@@ -63,14 +65,14 @@
 
 #slideWrap .slider li {
     height: 100vh;
-    padding: 150px 0;
+    padding: 120px 0;
     text-align: center;
     background: no-repeat 50% 50%;
 }
 
 #slideWrap .slider li div {
     position: relative;
-    top: 70px;
+    top: 30px;
     font-size: 2rem;
     line-height: 1.8;
     opacity: 0;
@@ -97,7 +99,7 @@
 }
 
 #slideWrap .slider .bg3 {
-    background-color: #FFEFCA;
+    background-color: #17abe5;
     background-image: url(../images/pic_3.png);
 }
 
@@ -181,7 +183,7 @@
 #section2 .btn {
     position: absolute;
     left: 600px;
-    top: 670px;
+    top: 570px;
     /* 투명 배경 */
     background: transparent;
     opacity: 0;
@@ -234,11 +236,6 @@
     transform: rotate(-18deg);
 }
 
-#product>div:hover {
-    z-index: 1;
-    transform: scale(1.2);
-}
-
 #product .prod2 {
     left: 278px;
     top: 0;
@@ -254,4 +251,9 @@
     height: 445px;
     background: blue;
     transform: rotate(18deg);
+}
+
+#product>div:hover {
+    z-index: 1;
+    transform: scale(1.2);
 }
