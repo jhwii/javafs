@@ -111,6 +111,7 @@ nav .sub {
 /* 탭 메뉴 */
 .tabs {
     padding: 24px 24px 24px 0;
+
 }
 .tabs input, .tabs > div{
     display: none;

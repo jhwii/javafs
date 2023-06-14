@@ -126,6 +126,22 @@ $(function () {
             txt2.css({ left: -400 + 'px' });
         }
     });
+    // 섹션3: 탭
+    const tabBtn = $('#section3 .thumb li'),
+        bigImg = $('#section3 .big li'),
+        txt = $('#section3 .txt li');
+
+    tabBtn.click(function () {
+        let idx = $(this).index();
+        tabBtn.removeClass('active');
+        bigImg.removeClass('active');
+        txt.removeClass('active');
+        $(this).addClass('active');
+        tabBtn.eq(idx).addClass('active');
+        bigImg.eq(idx).addClass('active');
+        txt.eq(idx).addClass('active');
+    })
+
 
     // 풀페이지 레이아웃
     $('.section').mousewheel(function (e, delta) {
