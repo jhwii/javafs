@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>푸터</title>
+    <title>패밀리사이트_팜한농</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* 초기화 */
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
 
         * {
@@ -34,40 +35,10 @@
             color: #333;
         }
 
-        /* 푸터 */
-        #footer {
-            display: flex;
-            justify-content: space-between;
-            padding: 70px 80px 70px 330px;
-            background: #2c2d2f url(images/f_logo.png) no-repeat 80px 50%/10%;
-            color: rgba(255, 255, 255, 0.3);
-        }
-
-        #footer .bnb ul {
-            display: flex;
-            margin-bottom: 30px;
-            font-size: 1.8rem;
-            font-weight: 500;
-        }
-
-        #footer .bnb ul a {
-            color: #fff;
-        }
-
-        #footer .bnb li:not(:last-of-type)::after {
-            content: '|';
-            margin: 0 16px;
-            color: rgba(255, 255, 255, 0.2);
-        }
-
-        #footer .copy {
-            margin-top: 30px;
-        }
-
         /* 패밀리사이트 */
         .fs {
-            position: relative;
-            top: 80px;
+            position: absolute;
+            top: 200px;
             width: 240px;
             height: 50px;
         }
@@ -108,32 +79,15 @@
 </head>
 
 <body>
-    <div id="footer">
-        <div class="leftCont">
-            <div class="bnb">
-                <ul>
-                    <li><a href="#">개인정보처리방침</a></li>
-                    <li><a href="#">이메일무단수집거부</a></li>
-                    <li><a href="#">1:1문의</a></li>
-                    <li><a href="#">컬렉션</a></li>
-                </ul>
-            </div>
-            <div class="addr">
-                <p>서울특별시 강남구 테헤란로 508 해성2빌딩 18층</p>
-                <p>사업자등록번호 211-86-59430 | 통신판매업 신고번호 2019-서울강남-03726 | 고객센터 1600-1811</p>
-            </div>
-            <div class="copy">Copyright 2023 Calvin Klein. All rights reserved.</div>
-        </div>
+    <h1>패밀리사이트</h1>
 
-        <!-- 패밀리 사이트 -->
-        <div class="fs">
-            <a href="#" class="fsBtn"><span>관련 사이트 열기</span><i class="fa-solid fa-plus"></i></a>
-            <ul>
-                <li><a href="https://blog.naver.com/ekddusekddus">블로그</a></li>
-                <li><a href="https://www.facebook.com/mega.mgc.coffee.official">페이스북</a></li>
-                <li><a href="https://www.instagram.com/mega.mgc.coffee_official/">인스타그램</a></li>
-            </ul>
-        </div>
+    <div class="fs">
+        <a href="#" class="fsBtn"><span>관련 사이트 열기</span><i class="fa-solid fa-plus"></i></a>
+        <ul>
+            <li><a href="https://blog.naver.com/ekddusekddus">블로그</a></li>
+            <li><a href="https://www.facebook.com/mega.mgc.coffee.official">페이스북</a></li>
+            <li><a href="https://www.instagram.com/mega.mgc.coffee_official/">인스타그램</a></li>
+        </ul>
     </div>
 
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
@@ -148,12 +102,32 @@
         // .fsBtn을 클릭하면 함수 실행
         $('.fs .fsBtn').click(function () {
             // $('.fs ul').toggle();
+            /* 
+                효과 메서드
+                hide()
+                show()
+                toggle()
+                fadeIn()
+                fadeOut()
+                fadeTo()
+                fadeToggle()
+                slideDown()
+                slideUp()
+                slideToggle()
+                animate()
+                stop()
 
+                토글(toggle)이란? 두 가지 상태를 번갈아 반복
+
+            */
             fsLst.slideToggle();
 
             /* 삼각형 모양 바꾸기 */
             if (state == 0) {
-                // $('선택자').attr({CSS속성: 값, 속성: 값, ...}); ~ 여러 개의 속성
+                // $('선택자').메서드();
+                // $('선택자').attr(속성, 값); ~ 하나의 속성만
+                // $('선택자').attr({}); ~ 여러 개의 속성
+                // $('선택자').css({CSS속성: 값, 속성: 값, ...}); ~ 여러 개의 속성
                 fsIcon.attr({ class: 'fa-solid fa-minus' });
                 fstxt.text('관련 사이트 닫기');
                 state = 1;
@@ -163,6 +137,7 @@
                 state = 0;
             }
         });
+
     </script>
 </body>
 

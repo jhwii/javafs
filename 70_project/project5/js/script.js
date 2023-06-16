@@ -170,6 +170,35 @@ $(function () {
         inner.eq(idx).find('li').eq(cnt).fadeIn(1000).siblings().fadeOut(1000);
     }
 
+    //패밀리 사이트
+    const fs = $('.fs'),
+        fsLst = fs.find('ul'),
+        fsIcon = fs.find('i'),
+        fstxt = fs.find('span'),
+        fsBtn = fs.find('.fsBtn');
+
+        let state = 0;
+    // .fsBtn을 클릭하면 함수 실행
+    $('.fs .fsBtn').click(function (e) {
+        // $('.fs ul').toggle();
+        e.preventDefault();
+        fsLst.slideToggle();
+        fsBtn.Toggle();
+
+        /* 삼각형 모양 바꾸기 */
+        if (state == 0) {
+            // $('선택자').attr({CSS속성: 값, 속성: 값, ...}); ~ 여러 개의 속성
+            fsIcon.attr({ class: 'fa-solid fa-minus' });
+            fstxt.text('관련 사이트 닫기');
+            state = 1;
+        } else {
+            fsIcon.attr({ class: 'fa-solid fa-plus' });
+            fstxt.text('관련 사이트 열기');
+            state = 0;
+        }
+    });
+
+
     // 풀페이지 레이아웃
     $('html').stop().animate({ scrollTop: 0 });
 
