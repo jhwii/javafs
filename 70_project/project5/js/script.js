@@ -1,5 +1,7 @@
 // 문서가 준비되면 함수 실행
 $(function () {
+    // 헤더 색변경
+    const headerBg = $('#header');
 
     // 내비게이션바
     $('.main > li > a').mouseenter(function (e) {
@@ -107,10 +109,12 @@ $(function () {
             btn.css({ opacity: 1 });
             txt1.css({ left: 360 + 'px' });
             txt2.css({ left: 360 + 'px' });
+            headerBg.css({background: '#888'});
         } else {
             btn.css({ opacity: 0 });
             txt1.css({ left: -800 + 'px' });
             txt2.css({ left: -400 + 'px' });
+            headerBg.css({background: 'transparent'});
         }
     });
 
@@ -177,7 +181,7 @@ $(function () {
         fstxt = fs.find('span'),
         fsBtn = fs.find('.fsBtn');
 
-        let state = 0;
+    let state = 0;
     // .fsBtn을 클릭하면 함수 실행
     $('.fs .fsBtn').click(function (e) {
         // $('.fs ul').toggle();
