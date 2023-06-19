@@ -44,14 +44,7 @@
             align-items: center;
             justify-content: space-between;
             padding: 0 60px;
-            background: #FDD40B;
             transition: .5s .5s;
-            /* 
-                transition-perperty: all;
-                transition-duration: .5s;
-                transition-time-function: ease;
-                transition-delay: .5s
-            */
         }
 
         /* 로고 */
@@ -153,7 +146,6 @@
         /* 로그인/회원가입 */
         .member a {
             margin: 0 8px;
-
         }
     </style>
 </head>
@@ -210,7 +202,7 @@
     <script>
         // 헤더
         const headerBg = $('#header');
-        
+
         $(window).scroll(function () {
             let st = $(this).scrollTop;
 
@@ -220,6 +212,7 @@
                 headerBg.css({ background: '#888' })
             }
         });
+
         // 내비게이션바
         $('.main > li > a').mouseenter(function (e) {
             // a태그 기본 이벤트 제거
@@ -231,8 +224,6 @@
             $('.sub').stop().slideUp(400);
             $('.nav_bg').stop().animate({ height: 0 }, 400);
         });
-
-
     </script>
 </body>
 
