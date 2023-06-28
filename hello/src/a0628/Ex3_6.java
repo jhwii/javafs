@@ -7,8 +7,9 @@ public class Ex3_6 {
 
         System.out.println();
         System.out.printf("%d + %d = %d%n" , a, b, a + b);
-        System.out.printf("%d + %d = %d%n" , a, b, a - b);
-        System.out.printf("%d + %d = %d%n" , a, b, a * b);
-        System.out.printf("%d + %d = %d%n" , a, b, a / b);
+        System.out.printf("%d - %d = %d%n" , a, b, a - b);
+        System.out.printf("%d * %d = %d%n" , a, b, a * b);
+        System.out.printf("%d / %d = %d%n" , a, b, a / b);
+        System.out.printf("%d / %f = %f%n" , a, (float)b, a / (float)b);
     }
 }

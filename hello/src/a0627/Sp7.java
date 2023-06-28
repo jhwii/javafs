@@ -2,7 +2,7 @@ package a0627;
 
 public class Sp7 {
     public static void main(String[] args) {
-    double x = 5.0;
+    // double x = 5.0;
     double y = 0.0;
     double z = 5 % y;
     if (Double.isNaN(z)) {
