@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 10px;
+        }
+
+        body {
+            color: #333;
+            font-size: 1.5rem;
+        }
+
+
+        li {
+            list-style: none;
+        }
+        
+        /* 캐로셀 */
+        /* layout */
+        #slideWrap {
+            position: relative;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            width: 100%;
+        }
+
+        #slideWrap .slider li {
+            position: relative;
+            left: 0;
+            top: 0;
+            text-align: center;
+            height: 100vh;
+            background: no-repeat 50% 50%/auto;
+        }
+
+        /* 배경 */
+        #slideWrap .slider .bg1 {
+            background-image: url(images/main_visual1.jpg);
+        }
+
+        #slideWrap .slider .bg2 {
+            background-image: url(images/main_visual2.jpg);
+        }
+
+
+
+        #slideWrap .slider li div {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 900;
+            opacity: 1;
+            font-size: 2rem;
+            width: 600px;
+            height: 300px;
+            border: 1px solid black;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 40px 0;
+
+        }
+
+        #slideWrap .slider li div span {
+            display: block;
+            flex-direction: column;
+            margin: 10px;
+            font-weight: 700;
+        }
+
+        .impact {
+            font-size: 3.5rem;
+        }
+
+        .radius1 {
+            position: absolute;
+            top: 50%;
+            left: 25%;
+            transform: translate(-25%, -50%);
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            border: 2px solid black;
+            border-radius: 50%;
+        }
+
+        .radius2 {
+            position: absolute;
+            top: 50%;
+            right: 25%;
+            transform: translate(-25%, -50%);
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            border: 2px solid black;
+            border-radius: 50%;
+
+        }
+
+        /* 이전/이후 버튼 */
+        #slideWrap .btn {
+            position: absolute;
+            z-index: 999;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+        }
+
+        #slideWrap .btn a {
+            display: block;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        #slideWrap #prev {
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+
+        }
+
+        #slideWrap #next {
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.js"></script>
+    <script>
+        $(function () {
+            const slider = $('.slider').bxSlider({
+                mode: 'fade',
+                // 자동 슬라이드
+                auto: true,
+                stopAutoOnClick: true,
+                autoHover: true,
+                pager: false,
+                controls: false,
+                speed: 600,
+                pause: 4000,
+                onSlideBefore: function () {
+                    autoPager();
+                },
+                onSlideAfter: function () {
+                    titMotion();
+                }
+            });
+
+            function titMotion() {
+                // 슬라이드 전환 직후의 텍스트 모션
+                $('#slideWrap .slider li div').animate({opacity: 1 });
+            }
+
+            function autoPager() {
+                // 슬라이드 전환 직전의 텍스트 모션
+                $('#slideWrap .slider li div').css({opacity: 0 });
+            }
+
+            // 이전 버튼
+            $('#slideWrap #prev').click(function (e) {
+                e.preventDefault();
+                // 이전 슬라이드로 이동
+                slider.goToPrevSlide();
+                autoPager();
+                return false;
+            });
+            // 이후 버튼
+            $('#slideWrap #next').click(function (e) {
+                e.preventDefault();
+                // 다음 슬라이드로 이동
+                slider.goToNextSlide();
+                autoPager();
+                return false;
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div id="slideWrap">
+
+        <!-- 슬라이드 배경 이미지 -->
+        <ul class="slider">
+            <li class="bg1">
+                <div class="tit">
+                    <span>언텍트시대 필수 과정</span>
+                    <span class="impact">비대면 상담</span>
+                    <span class="impact">비대면검사</span>
+                    <span>이제 당신의 공간에서 전문상담사를 만나보세요</span>
+                </div>
+            </li>
+            <li class="bg2">
+                <div class="tit">
+                    <span>가격부담 Down x 치료기대효과 Up</span>
+                    <span class="impact">다소니 관계 테라피</span>
+                    <span>검사와 상담이 필요한 여러분께 딱!</span>
+                </div>
+            </li>
+
+        </ul>
+
+        <!-- 이전/이후 버튼 -->
+        <!-- 폰트어썸 -->
+        <div class="btn">
+            <div class="radius1">
+                <a href="#" id="prev"><img src="images/btn_slide_prev.png" alt="이전버튼"></a>
+            </div>
+            <div class="radius2">
+                <a href="#" id="next"><img src="images/btn_slide_next.png" alt="이후버튼"></a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
