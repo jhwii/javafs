@@ -1,7 +1,7 @@
 package a0703;
 
 public class Car {
-        // P.217
+        // p.217
         // 필드 선언
         String company = "현대자동차";
         String model = "그랜저";
