@@ -1,7 +1,6 @@
 package a0629;
-
+// p.138 4번
 public class P_138_1 {
-    // p.138 4번
     public static void main(String[] args) {
         while(true) {
             int num1 = (int)(Math.random()*6)+1;

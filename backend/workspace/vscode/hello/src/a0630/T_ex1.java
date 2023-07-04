@@ -1,7 +1,6 @@
 package a0630;
-
-public class T_ex1 {
-    // 자바의 정석 p.175 5-4 
+// 자바의 정석 p.175 5-4 
+public class T_Ex1 {
     public static void main(String[] args) {
         int[][] arr = {
                 { 5, 5, 5, 5, 5 },

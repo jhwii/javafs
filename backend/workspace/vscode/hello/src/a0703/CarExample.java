@@ -1,7 +1,6 @@
 package a0703;
-
+// p.217
 public class CarExample {
-    // p.217
     public static void main(String[] args) {
         // car 객체 생성
         Car myCar = new Car();

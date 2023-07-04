@@ -1,7 +1,6 @@
 package a0630;
-
-public class T_ex4 {
-    // 자바의 정석 p.145 4-4
+// 자바의 정석 p.145 4-4
+public class T_Ex4 {
     public static void main(String[] args) {
         int sum = 0; // 총합을 구하는 변수
         int s = 1; // 값의 부호를 바꿔주는데 사용할 변수

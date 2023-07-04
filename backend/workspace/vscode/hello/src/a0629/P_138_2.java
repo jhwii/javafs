@@ -1,9 +1,8 @@
 /* package a0629;
-
+// p.138 7번
 import java.util.Scanner;
 
 public class P_138_2 {
-    // p.138 7번
     public static void main(String[] args) {
         boolean run = true;
         int balance = 10000;

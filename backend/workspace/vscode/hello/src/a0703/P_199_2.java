@@ -1,7 +1,6 @@
 package a0703;
-
+// p.199 8번
 public class P_199_2 {
-    // p.199 8번
     public static void main(String[] args) {
         int[][] array = {
             {95, 86},

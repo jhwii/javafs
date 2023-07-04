@@ -1,7 +1,6 @@
 package a0629;
-
+// p.138 3번
 public class P_138 {
-    // p.138 3번
     public static void main(String[] args) {
         int sum = 0;
         for(int i = 1; i <= 100; i++){
