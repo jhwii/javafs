@@ -1,4 +1,4 @@
-package a0704.Constructor;
+package a0704.constructor;
 // p.225
 public class CarExample {
     public static void main(String[] args) {

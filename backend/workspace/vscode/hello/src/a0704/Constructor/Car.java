@@ -1,4 +1,4 @@
-package a0704.Constructor;
+package a0704.constructor;
 // p.225
 public class Car {
     String company = "현대자동차";
