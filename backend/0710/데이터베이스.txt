@@ -103,7 +103,6 @@ insert into member (id, name, gender, post_num, address, tel, age) values ('sjsh
 
 다음은 DB 테이블의 전체 필드와 데이터를 보여주는 명령 형식.
 select * from 테이블명;
-
 select * from member;
 
 - 특정 필드의 전체 레코드 검색
@@ -126,11 +125,23 @@ select name, tel, gender, age from member where age >= 50 and gender = "m";
 select name, gender, address, age from member where age >= 20 and age <=29;
 
 문제3) 30대 또는 50대 남성회원의 이름, 전화번호, 나이, 성별 검색
-select name, tel, age, gender from member 
+select name, tel, age, gender from member where ( (age>=30 and age<=39) or (age>=50 and age<=59)) and gender = 'm';
 
+[예제 10-5] 이름이 '안철영'인 회원의 일련번호, 이름, 전화번호, 주소, 우편번호, 나이, 성별 검색
+select num, name, tel, address, post_num, age, gender from member where name = '안철영';
 
+특정문자열이 포함된 레코드 검색
+테이블명'이라는 DB 테이블에서 '검색필드'에 포함된 '문자열_수식' 조건을 만족하는 레코드의 필드명1, 필드명2, ...를 검색하는 명령 형식
 
+select 필드명1, 필드명2, ..from 테이블명 where 검색필드 like 문자열_수식
+성이 박씨인 회원의 이름, 전화번호 검색
+select name, tel from member where name like '박%';
 
+서울에 거주하는 회원의 일련번호, 이름, 주소, 성별 검색
+select num, name, address, gender from member where address like '서울%';
+
+은평구에 거주하는 회원의 모든 정보 검색
+select * from member where address like '%은평구%';
 
 
 
