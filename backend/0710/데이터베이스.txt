@@ -147,6 +147,49 @@ select num, name, address, gender from member where address like '서울%';
 은평구에 거주하는 회원의 모든 정보 검색
 select * from member where address like '%은평구%';
 
+데이터의 검색과 관리
+
+서울에 사는 회원을 나이순으로 오름차순 정렬한 뒤 이름, 나이, 주소, 전화번호, 성별 출력
+select name, age, address, tel, gender from member where address like '서울%' order by age;  // 내림차순은 뒤에 desc만 붙여주면됨
+
+부산에 사는 회원을 나이순으로 내림차순 정렬한 뒤 이름, 나이, 주소, 전화번호 출력
+select name, age, address, tel from member where address like '부산%' order by age desc;
+
+레코드의 수정
+'테이블명'이라는 DB 테이블에서 조건식을 만족하는 레코드의 '필드명' 값을 '필드값'으로 변경하는 명령 형식.
+update 테이블명 set 필드명 = 필드값 where 조건식;
+
+이름이 '고재진'인 레코드의 전화번호를 123-4567로 변경한 뒤 데이터 확인
+update member set tel = '123-4567' where name = '고재진';
+select name, tel from member where name = '고재진';
+
+이름이 '정한나'인 회원의 나이를 확인하고 값을 37로 변경
+select name, age from member where name = '정한나';
+update member set age = '37' where name = '정한나';
+select name, age from member where name = '정한나';
+
+레코드 삭제
+'테이블명' 이라는 DB테이블에서 조건식을 만족하는 레코드를 삭제하는 명령형식.
+delete from 테이블명 where 조건식;
+
+이름이 '김수련'인 레코드를 삭제한 뒤 확인
+delete from member where name = '김수련';
+select * from member where name like '김%';
+
+40대 회원의 레코드를 삭제한 뒤 35~53세 회원의 이름, 나이, 성별을 나이순으로 출력하여 확인
+delete from member where age>=40 and age<=49;
+select name, age, gender from member where age>=35 and age<=53 order by age;
+ 
+member 테이블의 전체 레코드를 삭제하는 명령 형식.
+delete from member
+
+조건식을 생략한 채 delete from 명령을 실행하면 member 테이블의 전체 레코드를 삭제할 수 있음.
+
+
+
+
+
+
 
 
 
