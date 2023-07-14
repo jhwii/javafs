@@ -1,0 +1,116 @@
+스트림 생성
+1. 컬렉션
+2. 배열
+3. 가변 매개변수
+4. 지정된 범위의 연속된 정수
+5. 특정 타입의 난수들
+6. 람다 표현식
+7. 파일
+8. 빈 스트림
+
+
+
+
+
+
+
+다음 예제는 iterate() 메소드를 이용하여 홀수만으로 이루어진 무한 스트림을 생성하는 예제입니다.
+
+예제
+IntStream stream = Stream.iterate(2, n -> n + 2); // 2, 4, 6, 8, 10, ...
+
+파일
+파일의 한 행(line)을 요소로 하는 스트림을 생성하기 위해 java.nio.file.Files 클래스에는 lines() 메소드가 정의되어 있습니다.
+
+또한, java.io.BufferedReader 클래스의 lines() 메소드를 사용하면 파일뿐만 아니라 다른 입력으로부터도 데이터를 행(line) 단위로 읽어 올 수 있습니다.
+
+예제
+String<String> stream = Files.lines(Path path);
+
+빈 스트림
+아무 요소도 가지지 않는 빈 스트림은 Stream 클래스의 empty() 메소드를 사용하여 생성할 수 있습니다.
+
+예제
+// 빈 스트림 생성
+
+Stream<Object> stream = Stream.empty();
+
+System.out.println(stream.count()); // 스트림의 요소의 총 개수를 출력함.
+
+
+
+
+
+
+스트림의 중개 연산(intermediate operation)
+스트림 API에 의해 생성된 초기 스트림은 중개 연산을 통해 또 다른 스트림으로 변환됩니다.
+
+이러한 중개 연산은 스트림을 전달받아 스트림을 반환하므로, 중개 연산은 연속으로 연결해서 사용할 수 있습니다.
+
+또한, 스트림의 중개 연산은 필터-맵(filter-map) 기반의 API를 사용함으로 지연(lazy) 연산을 통해 성능을 최적화할 수 있습니다.
+
+ 
+
+스트림 API에서 사용할 수 있는 대표적인 중개 연산과 그에 따른 메소드는 다음과 같습니다.
+
+ 
+
+1. 스트림 필터링 : filter(), distinct()
+
+2. 스트림 변환 : map(), flatMap()
+
+3. 스트림 제한 : limit(), skip()
+
+4. 스트림 정렬 : sorted()
+
+5. 스트림 연산 결과 확인 : peek()
+
+
+
+
+
+
+스트림의 최종 연산(terminal operation)
+스트림 API에서 중개 연산을 통해 변환된 스트림은 마지막으로 최종 연산을 통해 각 요소를 소모하여 결과를 표시합니다.
+
+즉, 지연(lazy)되었던 모든 중개 연산들이 최종 연산 시에 모두 수행되는 것입니다.
+
+이렇게 최종 연산 시에 모든 요소를 소모한 해당 스트림은 더는 사용할 수 없게 됩니다.
+
+ 
+
+스트림 API에서 사용할 수 있는 대표적인 최종 연산과 그에 따른 메소드는 다음과 같습니다.
+
+ 
+
+1. 요소의 출력 : forEach()
+
+2. 요소의 소모 : reduce()
+
+3. 요소의 검색 : findFirst(), findAny()
+
+4. 요소의 검사 : anyMatch(), allMatch(), noneMatch()
+
+5. 요소의 통계 : count(), min(), max()
+
+6. 요소의 연산 : sum(), average()
+
+7. 요소의 수집 : collect()
+
+
+
+
+
+
+
+스트림 요소의 수집 용도별 사용할 수 있는 Collectors 메소드는 다음과 같습니다.
+
+ 
+
+1. 스트림을 배열이나 컬렉션으로 변환 : toArray(), toCollection(), toList(), toSet(), toMap()
+
+2. 요소의 통계와 연산 메소드와 같은 동작을 수행 : counting(), maxBy(), minBy(), summingInt(), averagingInt() 등
+
+3. 요소의 소모와 같은 동작을 수행 : reducing(), joining()
+
+4. 요소의 그룹화와 분할 : groupingBy(), partitioningBy()

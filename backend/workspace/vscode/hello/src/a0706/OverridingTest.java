@@ -1,4 +1,4 @@
-package a0706;
+/* package a0706;
 
 public class OverridingTest {
     public static void main(String[] args) {
@@ -30,4 +30,4 @@ class Senior extends Person {
     public void cry() {
         System.out.println("훌쩍훌쩍");
     }
-}
+} */

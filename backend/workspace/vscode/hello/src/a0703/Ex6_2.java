@@ -1,4 +1,4 @@
-package a0703;
+/* package a0703;
 
 public class Ex6_2 {
     public static void main(String[] args) {
@@ -25,4 +25,4 @@ class Tv{
     void power(){power = !power;} // Tv를 켜거나 끄는 기능을 하는 메서드
     void channelUp(){++channel;} // Tv 채널을 높이는 기능을 하는 메서드
     void channelDown(){--channel;} // Tv 채널을 낮추는 기능을 하는 메서드
-}
+} */

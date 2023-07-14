@@ -1,4 +1,4 @@
-package a0710;
+/* package a0710;
 
 public class Sample1 {
     public static void main(String[] args) {
@@ -67,4 +67,4 @@ class Zookeeper {
     void feed(Feedable animal) {
         animal.feed();
     }
-}
+} */

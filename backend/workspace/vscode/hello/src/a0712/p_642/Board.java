@@ -10,6 +10,8 @@ public class Board {
         this.content = content;
         this.writer = writer;
     }
+    public Board(String string, String string2) {
+    }
     public String getSubject(){return subject;}
     public void setSubject(String subject){this.subject = subject;}
 
