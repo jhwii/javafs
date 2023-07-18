@@ -1,0 +1,17 @@
+MemoryMemberRepository라는 클래스가 MemberRepository 인터페이스를 구현하는 부분입니다.
+
+해당 클래스는 MemberRepository 인터페이스의 메서드들을 구현하여 멤버 객체를 메모리에 저장하고 조회하는 기능을 제공합니다. 주요 내용은 다음과 같습니다:
+
+store: store는 Long 타입의 일련번호를 키로, Member 객체를 값으로 가지는 HashMap입니다. 멤버를 저장하는 데 사용됩니다.
+
+sequence: sequence는 멤버의 일련번호를 나타내는 변수로, save 메서드에서 멤버를 저장할 때마다 1씩 증가합니다. 각 멤버에 고유한 일련번호를 할당하기 위해 사용됩니다.
+
+save: 멤버를 저장하고 일련번호를 할당하여 고유한 식별자로 사용한 뒤, 저장된 멤버를 반환하는 메서드입니다. store.put(member.getId(), member)를 통해 멤버를 저장합니다.
+
+findById: 주어진 id에 해당하는 멤버를 store에서 검색하여 Optional로 감싸서 반환하는 메서드입니다. store.get(id)를 사용하여 멤버를 가져옵니다.
+
+findByName: 주어진 name과 일치하는 멤버를 store에서 검색하여 Optional로 감싸서 반환하는 메서드입니다. stream()과 filter()를 사용하여 일치하는 멤버를 찾습니다.
+
+findAll: store에 저장된 모든 멤버를 리스트로 반환하는 메서드입니다. store.values()를 사용하여 모든 멤버를 가져옵니다.
+
+MemoryMemberRepository 클래스는 MemberRepository 인터페이스를 구현하여 메모리에서 멤버를 저장하고 조회하는 기능을 제공하는 리포지토리 클래스입니다.
