@@ -1,8 +1,10 @@
 package com.example.firstproject.controller;
 
 import com.example.firstproject.dto.ArticleForm;
+import com.example.firstproject.dto.CommentDto;
 import com.example.firstproject.entity.Article;
 import com.example.firstproject.repository.ArticleRepository;
+import com.example.firstproject.service.CommentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,6 +31,9 @@ public class ArticleController {
     @Autowired
     private  ArticleRepository articleRepository;
     // 스프링 부트가 미리 생성해놓은 리파지토리 객체를 가져옴(DI)
+
+    @Autowired
+    private CommentService commentService;
 
     @GetMapping("articles/new")
     public String newArticleForm(){
@@ -70,6 +75,7 @@ public class ArticleController {
         // articleEntity = optionalArticle.orElse(null);
 
         Article articleEntity = articleRepository.findById(id).orElse(null);
+        List<CommentDto> commentsDtos = commentService.comments(id);
 
         // findById() 메서드는 Optional<T>을 반환하므로
         // 우리는 결과를 받을 Optional<Article> 변수를 선언
@@ -78,6 +84,7 @@ public class ArticleController {
 
         // 2: 가져온 데이터를 모델에 등록
         model.addAttribute("article", articleEntity);
+        model.addAttribute("commentDtos", commentsDtos);
 
         // 3: 보여줄 페이지를 설정 !
         return "articles/show";
@@ -122,11 +129,12 @@ public class ArticleController {
     @GetMapping("/articles/{id}/delete")
     public String delete(@PathVariable Long id, RedirectAttributes rttr){
         // 리다이렉트후 다른 컨트롤러나 뷰로 데이터를 전달할때 쓰임
-
         log.info("삭제 요청이 들어왔습니다!!");
+
         // 삭제 대상을 가져옴
          Article target = articleRepository.findById(id).orElse(null);
         log.info(target.toString());
+
         // 대상을 삭제
        if(target != null){
            articleRepository.delete(target);
