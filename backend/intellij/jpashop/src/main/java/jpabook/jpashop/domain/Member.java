@@ -27,4 +27,12 @@ public class Member {
     @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>();
     // Member 엔티티와의 관계를 매핑하고 'mappedBy' 속성에는 이 관계를 정의 하는 필드명인 member 속성이 존재
+
+    @Override
+    public String toString() {
+        return "Member{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

@@ -39,12 +39,12 @@ public class Order {
     private LocalDateTime orderDate;  // 주문시간
 
     @Enumerated(EnumType.STRING)
-    private OrderStatus status;
+    private OrderStatus status;  // 주문 상태 [ORDER, CANCEL]
 
     // == 연관관계 메서드 == //
 
     // 양쪽을 동기화
-    public void setMember(Member member){
+    public void setMember(Member member) {
         this.member = member;
         // 현재 order 엔티티에서 member 엔티티를 설정
         // order 엔티티가 member 엔티티를 참조
@@ -52,22 +52,22 @@ public class Order {
         // 주어진 order 엔티티를 Member 엔티티의 order 엔티티를 Member 엔티티의 orders 컬렉션에 추가하는 부분
     }
 
-    public void addOrderItem(OrderItem orderItem){
+    public void addOrderItem(OrderItem orderItem) {
         orderItems.add(orderItem);
         orderItem.setOrder(this);
     }
 
-    public void setDelivery(Delivery delivery){
+    public void setDelivery(Delivery delivery) {
         this.delivery = delivery;
         delivery.setOrder(this);
     }
 
     // 생성 메서드
-    public static Order createOrder(Member member, Delivery delivery, OrderItem... orderItems){
+    public static Order createOrder(Member member, Delivery delivery, OrderItem... orderItems) {
         Order order = new Order();
         order.setMember(member);
         order.setDelivery(delivery);
-        for(OrderItem orderItem : orderItems){
+        for (OrderItem orderItem : orderItems) {
             order.addOrderItem(orderItem);
         }
         order.setStatus(OrderStatus.ORDER);
@@ -84,15 +84,23 @@ public class Order {
 
     // 비즈니스 로직
     // 주문 취소
-    public void cancel (){
-        if(delivery.getStatus() == DeliveryStatus.COMP){
+    public void cancel() {
+        if (delivery.getStatus() == DeliveryStatus.COMP) {
             throw new IllegalStateException("이미 배송된 상품은 취소가 불가능 합니다.");
         }
         this.setStatus(OrderStatus.CANCEL);
-        for(OrderItem orderItem : orderItems){
+        for (OrderItem orderItem : orderItems) {
             orderItem.cancel();
         }
     }
-
-
+    // 조회 로직
+    // 전체 주문 가격 조회
+    public int getTotalPrice(){
+        int totalPrice = 0;
+        for(OrderItem orderItem : orderItems){
+            totalPrice += orderItem.getTotalPrice();
+        }
+        return totalPrice;
+    }
 }
+
