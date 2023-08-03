@@ -59,7 +59,4 @@ public class OrderService {
         // OrderSearch 객체를 기반으로 주문(Order)을 검색하는 메서드
         // orderSearch - 주문에 필요한 조건
 
-
-
-
 }
