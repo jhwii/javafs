@@ -1,0 +1,13 @@
+Thymeleaf의 th:each 문법에서는 ${users} 리스트의 각 요소를 순회하면서, 선택 변수인 userStat에 다음과 같은 정보들을 포함합니다:
+
+userStat.count: 반복 횟수 (1부터 시작)
+userStat.index: 반복 횟수에 대한 0부터 시작하는 인덱스
+userStat.size: 전체 리스트의 크기
+userStat.even: 현재 반복이 짝수 번째인지 여부 (true 또는 false)
+userStat.odd: 현재 반복이 홀수 번째인지 여부 (true 또는 false)
+userStat.first: 현재 반복이 첫 번째인지 여부 (true 또는 false)
+userStat.last: 현재 반복이 마지막인지 여부 (true 또는 false)
+userStat.current: 현재 반복 중인 객체
+userStat.even 변수는 반복이 짝수 번째인지를 확인하기 위해 사용할 수 있습니다. 예를 들어, 반복문 내에서 조건문을 사용하여 짝수 번째 요소에 대해서만 특정 작업을 수행하고 싶을 때 유용합니다.
+
+예를 들어, 다음과 같이 th:each 문법을 사용하여 리스트의 각 요소를 출력하고, userStat.even 변수를 사용하여 짝수 번째 요소에 대해 "Even"이라는 텍스트를 출력하는 코드를 작성할 수 있습니다:
