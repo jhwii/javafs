@@ -11,16 +11,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "/thymeleaf")
+@RequestMapping(value = "thymeleaf")
 public class ThymeleafExController {
-    @GetMapping(value = "/ex01")
-    public String view(Model model)
-    {
-        model.addAttribute("data","Thymeleaf 에 오신것을 환영합니다.");
 
+    @GetMapping(value = "/ex01")
+    public String thymeleafExample01(Model model){
+        model.addAttribute("data","타임리프 예제 입니다.");
         return "thymeleafEx/thymeleafEx01";
     }
-
     @GetMapping(value = "/ex02")
     public String thymeleafExample02(Model model){
         ItemDto itemDto = new ItemDto();
@@ -35,48 +33,43 @@ public class ThymeleafExController {
 
     @GetMapping(value = "/ex03")
     public String thymeleafExample03(Model model){
+        List<ItemDto> itemDtoList  = new ArrayList<>();
 
-        List<ItemDto> itemDtoList = new ArrayList<>();
-
-        for(int i=1;i<=10;i++){
+        for(int i=1; i<=10;i++){
             ItemDto itemDto = new ItemDto();
-            itemDto.setItemDetail("상품 상세 설명"+i);
+            itemDto.setItemDetail("상품 상세 설명"+ i);
             itemDto.setItemNm("테스트 상품" + i);
             itemDto.setPrice(1000*i);
             itemDto.setRegTime(LocalDateTime.now());
-
             itemDtoList.add(itemDto);
         }
-
         model.addAttribute("itemDtoList", itemDtoList);
         return "thymeleafEx/thymeleafEx03";
     }
 
+
     @GetMapping(value = "/ex04")
     public String thymeleafExample04(Model model){
+        List<ItemDto> itemDtoList  = new ArrayList<>();
 
-        List<ItemDto> itemDtoList = new ArrayList<>();
-
-        for(int i=1;i<=10;i++){
+        for(int i=1; i<=10;i++){
             ItemDto itemDto = new ItemDto();
-            itemDto.setItemDetail("상품 상세 설명"+i);
+            itemDto.setItemDetail("상품 상세 설명"+ i);
             itemDto.setItemNm("테스트 상품" + i);
             itemDto.setPrice(1000*i);
             itemDto.setRegTime(LocalDateTime.now());
-
             itemDtoList.add(itemDto);
         }
-
         model.addAttribute("itemDtoList", itemDtoList);
         return "thymeleafEx/thymeleafEx04";
     }
+
     @GetMapping(value = "/ex05")
-    public String thymeleafExample05(Model model) {
+    public String thymeleafExample05(){
         return "thymeleafEx/thymeleafEx05";
     }
-
     @GetMapping(value = "/ex06")
-    public String thymeleafExample06(String param1, String param2, Model model) {
+    public String thymeleafExample06(String param1, String param2, Model model){
         model.addAttribute("param1", param1);
         model.addAttribute("param2", param2);
         return "thymeleafEx/thymeleafEx06";

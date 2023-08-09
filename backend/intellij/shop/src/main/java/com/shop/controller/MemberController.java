@@ -4,7 +4,6 @@ import com.shop.dto.MemberFormDto;
 import com.shop.entity.Member;
 import com.shop.service.MemberService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.Banner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,7 +28,7 @@ public class MemberController {
     }
     @PostMapping(value = "/new")
     public String memberForm2(@Valid MemberFormDto memberFormDto,
-                             BindingResult bindingResult, Model model ){
+                              BindingResult bindingResult, Model model ){
         if(bindingResult.hasErrors()){
             return "member/memberForm";
         }
@@ -43,15 +42,15 @@ public class MemberController {
         return "redirect:/";
 
     }
+
     @GetMapping(value = "/login")
     public String loginMember(){
         return "/member/memberLoginForm";
     }
+
     @GetMapping(value = "/login/error")
     public String loginError(Model model){
-        model.addAttribute("loginErrorMsg", "아이디 또는 비밀번호를 확인해주세요.");
+        model.addAttribute("loginErrorMsg","아이디 또는 비밀번호를 확인해주세요");
         return "/member/memberLoginForm";
     }
-
-
 }

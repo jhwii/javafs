@@ -6,6 +6,7 @@
 </head>
 <body>
 <h1>상품 리스트 출력 예제</h1>
+
 <table border="1">
     <thead>
         <tr>
@@ -17,7 +18,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr th:each="itemDto, status: ${itemDtoList}">
+        <tr th:each="itemDto, status :${itemDtoList}">
             <td th:text="${status.index}"></td>
             <td th:text="${itemDto.itemNm}"></td>
             <td th:text="${itemDto.itemDetail}"></td>
@@ -25,6 +26,8 @@
             <td th:text="${itemDto.regTime}"></td>
         </tr>
     </tbody>
+
 </table>
+
 </body>
 </html>

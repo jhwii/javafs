@@ -12,12 +12,16 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 @SpringBootTest
 @Transactional
-@TestPropertySource(locations = "classpath:application-test.properties")
+@TestPropertySource(locations="classpath:application-test.properties")
+
 class MemberServiceTest {
+
     @Autowired
     MemberService memberService;
+
     @Autowired
     PasswordEncoder passwordEncoder;
 
@@ -54,4 +58,6 @@ class MemberServiceTest {
             memberService.saveMember(member2);});
         assertEquals("이미 가입된 회원입니다.", e.getMessage());
     }
+
+
 }
