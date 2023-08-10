@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @ToString
-public class Item {
+public class Item extends BaseEntity {
 
     @Id
     @Column(name="item_id")
@@ -37,9 +37,7 @@ public class Item {
     @Enumerated(EnumType.STRING)
     private ItemSellStatus itemSellStatus;
 
-    private LocalDateTime regTime;
 
-    private LocalDateTime updateTime;
 
     public void removeStock(int stockNumber){
         int restStock = this.stockNumber - stockNumber;
@@ -49,9 +47,7 @@ public class Item {
         }
         this.stockNumber = restStock;
     }
-
     public void addStock(int stockNumber){
         this.stockNumber += stockNumber;
     }
 }
-
