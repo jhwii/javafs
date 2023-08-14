@@ -44,8 +44,7 @@ public class ItemFormDto {
     // ItemFormDto 객체의 필드값을 가지고 item 객체를 생성
 
     public static ItemFormDto of(Item item){
-        return modelMapper.map(item, ItemFormDto.class);
+        return modelMapper.map(item,ItemFormDto.class);
     }
     // Item 객체에서 ItemFormDto 객체로 매핑
-
 }

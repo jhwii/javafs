@@ -18,5 +18,5 @@ public abstract class BaseEntity extends  BaseTimeEntity{
     private String createdBy; // 생성자 정보를 저장
 
     @LastModifiedBy
-    private String modifiedBy; // 수성자 정보를 저장
+    private String modifiedBy; // 수정자 정보를 저장
 }
