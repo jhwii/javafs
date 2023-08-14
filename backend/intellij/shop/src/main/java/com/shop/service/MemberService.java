@@ -11,7 +11,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.apache.tomcat.jni.User.username;
 
 @Service
 @Transactional
@@ -46,8 +45,8 @@ public class MemberService implements UserDetailsService {
                 .build();
     }
 }
-// UserDetails  객체는 Spring Security 에서 사용자의 인증 및 권한 정보를 나타내는 인터페이스
-//loadUserByUsername 메서드는 이 정보를 검색하여 해당 정보를 기반으로
+// UserDetails 객체는 Spring Security 에서 사용자의 인증 및 권한 정보를 나타내는 인터페이스
+// loadUserByUsername 메서드는 이 정보를 검색하여 해당 정보를 기반으로
 // 사용자 인증 및 권한 부여를 수행하기 위해 사용
 // 이메서드를 구현하여 사용자 정보를 데이터 베이스에 가져와
 // spring Security 의 사용자 인증 및 권한 기능을 활용
