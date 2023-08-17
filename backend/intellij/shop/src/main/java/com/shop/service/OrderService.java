@@ -14,8 +14,10 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.thymeleaf.util.StringUtils;
 
 import javax.persistence.EntityExistsException;
+import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,11 +69,11 @@ public class OrderService {
         // 유저의 주문 총 개수를 구합니다.
         List<OrderHistDto> orderHistDtos = new ArrayList<>();
 
-        for (Order order : orders){ // 조회된 주문 목록을 순회하면서 각 주문에 대한 정보를 orderHistDto 로 변환
+        for (Order order : orders) { // 조회된 주문 목록을 순회하면서 각 주문에 대한 정보를 orderHistDto 로 변환
             OrderHistDto orderHistDto = new OrderHistDto(order);
             List<OrderItem> orderItems = order.getOrderItems();
             // 해당 주문에 속한 모든 주문항목을 조회
-            for (OrderItem orderItem : orderItems){
+            for (OrderItem orderItem : orderItems) {
                 // 조회된 주문항목을 순회하면서
                 ItemImg itemImg = itemImgRepository.findByItemIdAndRepImgYn(orderItem.getItem().getId(), "Y");
                 // 대표이미지 조회
@@ -85,4 +87,22 @@ public class OrderService {
         return new PageImpl<OrderHistDto>(orderHistDtos, pageable, totalCount);
         // 생성된 orderHistDto 리스트를 페이징 처리하여 반환
     }
+
+    @Transactional(readOnly = true)
+    public boolean validateOrder(Long orderId, String email) {
+        Member curMember = memberRepository.findByEmail(email);
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(EntityNotFoundException::new);
+        Member savedMember = order.getMember();
+        if (!StringUtils.equals(curMember.getEmail(), savedMember.getEmail())){
+            return false;
+        }
+        return true;
+    }
+    public void cancelOrder(Long orderId){
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(EntityNotFoundException::new);
+        order.cancelOrder();
+    }
+
 }
