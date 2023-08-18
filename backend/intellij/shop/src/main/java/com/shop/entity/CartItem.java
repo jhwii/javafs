@@ -40,5 +40,4 @@ public class CartItem extends BaseEntity {
         this.count = count;
     }
 
-
 }
