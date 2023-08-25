@@ -1,0 +1,33 @@
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
+const App = () => {
+
+  const [posts, setPosts] = useState([]);
+
+  const myFunction = async () => {
+    try {
+      const response = await axios.get('https://jsonplaceholder.typicode.com/photos');
+      setPosts(response.data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  useEffect(() => {
+    myFunction();
+  }, []); // 빈 배열을 두 번째 인자로 전달하여, 컴포넌트가 처음 렌더링될 때만 myFunction을 실행합니다.
+
+  return (
+    <ul>
+      {posts.map(post => (
+        <li key={post.id}>
+          <div>{post.title}</div>
+          <div><img src={post.thumbnailUrl} alt={post.title} /></div>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+export default App;

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+<th:block layout:fragment="css">
+
+    .section {
+    width: 100%;
+    height: 630px;
+    background: rgb(29, 29, 29);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
+    .section .sectionLeft {
+    background: #fff;
+    width: 315px;
+    height: 400px;
+    margin-right: 20px;
+    }
+
+    .section .sectionRight {
+    background: #fff;
+    width: 945px;
+    height: 400px;
+    }
+
+    .footer {
+    border-top: 1px solid #444;
+    text-align: center;
+    line-height: 150px;
+    }
+
+    .footer div {
+    color: #fff;
+    }
+
+
+    </style>
+</th:block>
+<div layout:fragment="content">
+
+    <div class="section">
+        <div class="sectionLeft">
+            <ul>
+                <li>차명</li>
+                <li>차종</li>
+                <li>브랜드</li>
+                <li>색상</li>
+                <li>가격</li>
+                <li>연식</li>
+                <li>세부사항</li>
+                <li>판매상태</li>
+            </ul>
+        </div>
+        <div class="sectionRight">
+            <ul>
+                <li>차명</li>
+                <li>차종</li>
+                <li>브랜드</li>
+                <li>색상</li>
+                <li>가격</li>
+                <li>연식</li>
+                <li>세부사항</li>
+                <li>판매상태</li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+
+</html>

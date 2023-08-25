@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<div th:fragment="header" class="header">
+    <div class="navBar">
+        <div class="navLeft">
+            <a href="/"><img src="/img/logo7.png" alt="로고"></a>
+        </div>
+        <div class="navCenter">
+            <ul class="navList">
+                <li><a href="/members/item/new" sec:authorize="hasAnyAuthority('ROLE_USER')">차량등록</a></li>
+                <li><a href="/item/search" sec:authorize="isAnonymous()">차량검색</a></li>
+                <li><a href="/members/login" sec:authorize="isAnonymous()">로그인</a></li>
+                <li><a href="/members/logout" sec:authorize="isAuthenticated()">로그아웃</a></li>
+                <li><a href="/members/new" sec:authorize="isAnonymous()">회원가입</a></li>
+            </ul>
+        </div>
+        <div class="navRight" th:action="@{/}" method="get">
+            <input type="search" placeholder="차량 이름을 검색하세요">
+        </div>
+    </div>
+
+</div>
+
+</html>
