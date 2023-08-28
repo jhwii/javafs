@@ -1,7 +1,0 @@
-package com.shop.exception;
-
-public class OutOfStockException extends RuntimeException {
-    public OutOfStockException(String message) {
-    }
-}
-// 상품이 주문수량보다 재고의 수가 적을때 발생시킬 exception 을 정의
