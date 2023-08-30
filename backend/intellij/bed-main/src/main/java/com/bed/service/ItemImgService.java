@@ -35,18 +35,16 @@ public class ItemImgService {
         String imgName = "";
         String imgUrl = "";
 
+        // 파일 업로드
         if (!StringUtils.isEmpty(oriImgName)) {
             imgName = fileService.uploadFile(itemImgLocation, oriImgName, itemImgFile.getBytes());
             imgUrl = "/item_images/" + imgName;
         }
 
+        // 상품 이미지 정보 저장
         itemImg.updateItemImg(oriImgName, imgName, imgUrl);
-
         itemImgRepository.save(itemImg);
     }
-
-
-
 
     public void updateItemImg(Long itemImgId, MultipartFile itemImgFile) throws Exception {
         // 이미지 파일이 비어 있을 경우 업데이트 작업을 건너뜁니다.

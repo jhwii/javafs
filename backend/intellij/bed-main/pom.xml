@@ -16,7 +16,7 @@
 	<properties>
 		<java.version>11</java.version>
 	</properties>
-	<!-- 아임포트 REST API연동 모듈 -->
+	<!-- 아임포트 REST API 연동 모듈 -->
 	<repositories>
 		<repository>
 			<id>jitpack.io</id>
@@ -24,7 +24,7 @@
 		</repository>
 	</repositories>
 	<dependencies>
-		<!-- 아임포트(결재) REST API연동 모듈 -->
+		<!-- 아임포트(결제) REST API 연동 모듈 -->
 		<dependency>
 			<groupId>com.github.iamport</groupId>
 			<artifactId>iamport-rest-client-java</artifactId>
@@ -42,7 +42,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>

@@ -14,17 +14,14 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/static/images/**")
-                .addResourceLocations("file:///C:/shop/src/main/resources/static/images");
+                .addResourceLocations("file:///D:/bed-main/src/main/resources/static/images");
         registry.addResourceHandler("/asForm/**")
 //                .addResourceLocations("file:///C:/shop/src/main/resources/static/asForm");
-                .addResourceLocations("file:/C:/item/asForm/");
+                .addResourceLocations("file:///D:/bed-main/item/asForm/");
         registry.addResourceHandler("/item_images/**")
-                .addResourceLocations("file:/C:/item/item_images/");
-
-
+                .addResourceLocations("file:///D:/item/item_images/");
 
     }
-
 
 }
 
