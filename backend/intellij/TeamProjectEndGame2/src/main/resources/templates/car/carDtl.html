@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layouts/layout1}">
+      layout:decorate="~{layouts/layout}">
 
-<head>
-    <meta name="_csrf" th:content="${_csrf.token}"/>
-    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
-</head>
+<!--<head>
+    <meta name="_csrf" th:content="${_csrf?.token}" th:if="${_csrf} ne null">
+    <meta name="_csrf_header" th:content="${_csrf?.headerName}" th:if="${_csrf} ne null">
+</head>-->
 
 <!-- 사용자 스크립트 추가 -->
 <th:block layout:fragment="script">
@@ -15,9 +15,9 @@
 
             calculateTotalPrice();
 
-<!--            $("#count").change( function(){-->
-<!--                calculateTotalPrice();-->
-<!--            });-->
+            $("#count").change( function(){
+                calculateTotalPrice();
+            });
         });
 
         function calculateTotalPrice(){
@@ -30,14 +30,12 @@
         function order(){
             var token = $("meta[name='_csrf']").attr("content");
             var header = $("meta[name='_csrf_header']").attr("content");
-
          /* 일반적으로 Spring Security 는 csrf 공격을 방지하기 위해 csrf 토큰을 생성하고
-            이를 웹페이지에 삽입합니다. 그리고 클라이언트에서는 이 토큰을 요청 헤더에 포함시켜 전송
+            이를 웹페이지에 삽입합니다. 그리고 클라이언트에서는 이토큰을 요청 헤더에 포함시켜 전송
             <meta> 태그로부터 CSRF 토큰과 헤더 이름 가져온다. */
-
             var url = "/order";
             var paramData = {
-                itemId : $("#itemId").val(),
+                carId : $("#carId").val(),
                 count : $("#count").val()
             };
             /* 자바스크립트에 리터럴 - 주문요청에 필요한 데이터를 객체로 생성 */
@@ -55,14 +53,14 @@
                 dataType : "json",
                 cache   : false,
                 success  : function(result, status){
-                    alert("구매가 완료 되었습니다.");
+                    alert("주문이 완료 되었습니다.");
                     location.href='/';
                 },
                 error : function(jqXHR, status, error){
 
                     if(jqXHR.status == '401'){  /* 로그인이 안됐을때 */
                         alert('로그인 후 이용해주세요');
-                        location.href='/members/login';
+                        location.href='/admin/login';
                     } else{ /* 그이외의 에러 */
                         alert(jqXHR.responseText);
                     }
@@ -70,13 +68,13 @@
             });
         }
 
-        function addCart(){
+        function addInterestCar(){
             var token = $("meta[name='_csrf']").attr("content");
             var header = $("meta[name='_csrf_header']").attr("content");
 
             var url = "/cart";
             var paramData = {
-                itemId : $("#itemId").val(),
+                carId : $("#carId").val(),
                 count : $("#count").val()
             };
 
@@ -94,17 +92,18 @@
                 dataType : "json",
                 cache   : false,
                 success  : function(result, status){
-                    alert("상품을 관심차량에 담았습니다.");
+                    alert("상품을 장바구니에 담았습니다.");
                     location.href='/';
                 },
                 error : function(jqXHR, status, error){
 
                     if(jqXHR.status == '401'){
                         alert('로그인 후 이용해주세요');
-                        location.href='/members/login';
+                        location.href='/admin/login';
                     } else{
                         alert(jqXHR.responseText);
                     }
+
                 }
             });
         }
@@ -142,46 +141,29 @@
 
 <div layout:fragment="content" style="margin-left:25%;margin-right:25%">
 
-    <input type="hidden" id="itemId" th:value="${item.id}">
+    <input type="hidden" id="carId" th:value="${car.id}">
 
     <div class="d-flex">
         <div class="repImgDiv">
-            <img th:src="${item.itemImgDtoList[0].imgUrl}"
-                 class = "rounded repImg" th:alt="${item.itemNm}">
+            <img th:src="${car.carImgDtoList[0].imgUrl}"
+                 class = "rounded repImg" th:alt="${car.carNm}">
         </div>
         <div class="wd50">
-            <span th:if="${item.itemSellStatus == T(com.shop.constant.ItemSellStatus).SELL}"
+            <span th:if="${car.carSellStatus == T(com.shop.constant.ItemSellStatus).SELL}"
                   class="badge badge-primary mgb-15">
                 판매중
             </span>
-            <span th:unless="${item.itemSellStatus == T(com.shop.constant.ItemSellStatus).SELL}"
+            <span th:unless="${car.carSellStatus == T(com.shop.constant.ItemSellStatus).SELL}"
                   class="badge btn-danger mgb-15" >
                 품절
             </span>
-            <div class="h4">
-                상품명: <span th:text="${item.itemNm}"></span>
-            </div>
+            <div class="h4" th:text="${car.carNm}"></div>
+            <hr class="my-4">
 
             <div class="text-right">
-                <div class="h4 text-blue text-left">
-                    <input type="hidden" th:value="${item.type}" id="type" name="type">
-                    차종: <span th:text="${item.type}"></span>
-                </div>
-                <div class="h4 text-blue text-left">
-                    <input type="hidden" th:value="${item.brand}" id="brand" name="brand">
-                    브랜드: <span th:text="${item.brand}"></span>
-                </div>
-                <div class="h4 text-blue text-left">
-                    <input type="hidden" th:value="${item.year}" id="year" name="year">
-                    연식: <span th:text="${item.year}"></span>년
-                </div>
-                <div class="h4 text-blue text-left">
-                    <input type="hidden" th:value="${item.color}" id="color" name="color">
-                    색상: <span th:text="${item.color}"></span>색
-                </div>
-                <div class="h4 text-blue text-left">
-                    <input type="hidden" th:value="${item.price}" id="price" name="price">
-                    가격: <span th:text="${item.price}"></span>원
+                <div class="h4 text-danger text-left">
+                    <input type="hidden" th:value="${car.price}" id="price" name="price">
+                    <span th:text="${car.price}"></span>원
                 </div>
                 <div class="input-group w-50">
                     <div class="input-group-prepend">
@@ -197,13 +179,13 @@
                 <h5>결제 금액</h5>
                 <h3 name="totalPrice" id="totalPrice" class="font-weight-bold"></h3>
             </div>
-            <div th:if="${item.itemSellStatus == T(com.shop.constant.ItemSellStatus).SELL}"
+            <div th:if="${car.carSellStatus == T(com.shop.constant.ItemSellStatus).SELL}"
                  class="text-right">
                 <button type="button" class="btn btn-light border border-primary btn-lg"
-                        onclick="addCart()">관심 차량</button>
-                <button type="button" class="btn btn-primary btn-lg" onclick="order()">구매 하기</button>
+                        onclick="addInterestCar()">장바구니 담기</button>
+                <button type="button" class="btn btn-primary btn-lg" onclick="order()">주문하기</button>
             </div>
-            <div th:unless="${item.itemSellStatus == T(com.shop.constant.ItemSellStatus).SELL}"
+            <div th:unless="${car.carSellStatus == T(com.shop.constant.ItemSellStatus).SELL}"
                  class="text-right">
                 <button type="button" class="btn btn-danger btn-lg">품절</button>
             </div>
@@ -214,11 +196,11 @@
         <div class="container">
             <h4 class="display-5">상품 상세 설명</h4>
             <hr class="my-4">
-            <p class="lead" th:text="${item.itemDetail}"></p>
+            <p class="lead" th:text="${car.carDetail}"></p>
         </div>
     </div>
-    <div th:each="itemImg : ${item.itemImgDtoList}" class="text-center">
-        <img th:if="${not #strings.isEmpty(itemImg.imgUrl)}" th:src="${itemImg.imgUrl}"
+    <div th:each="carImg : ${car.carImgDtoList}" class="text-center">
+        <img th:if="${not #strings.isEmpty(carImg.imgUrl)}" th:src="${carImg.imgUrl}"
              class="rounded mgb-15" width="800">
     </div>
 

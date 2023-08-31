@@ -1,0 +1,8 @@
+cd src
+node -v
+
+nvm install 14.16.1
+
+nvm use 14.16.1
+
+nvm list 
