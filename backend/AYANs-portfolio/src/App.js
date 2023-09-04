@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NavMenu from './components/NavMenu';
 import Home from './pages/Home';
 import About from './pages/About';
-import Project from './pages/Project';
+import Project from './pages/Projects';
 import Contact from './pages/Contact';
 
 export default function App() {
@@ -18,7 +18,7 @@ export default function App() {
           <Route path="/contact">
             <Contact />
           </Route>
-          <Route path="/project">
+          <Route path="/projects">
             <Project />
           </Route>
           <Route path="/">
