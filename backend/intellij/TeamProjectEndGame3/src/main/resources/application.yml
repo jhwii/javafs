@@ -1,9 +1,12 @@
 spring:
-  #이미지 경로 설정
+  servlet:
+    multipart:
+      maxFileSize: 20MB
+      maxRequestSize: 100MB
 
+  carImgLocation: D:/TeamProjectEndGame3/car
 
-
-
+  uploadPath: file://D:/TeamProjectEndGame3/
 
   # DB 접속 정보 설정
   datasource:

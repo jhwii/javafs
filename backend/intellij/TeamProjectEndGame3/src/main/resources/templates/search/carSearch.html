@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
-<html xmlns:th="http://www.thymeleaf.org"
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/layout1}">
 <head>
@@ -14,13 +13,67 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <style>
+        .section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 1320px;
+            height: 900px;
+            margin: 0 auto;
+        }
+
+        .section .row {
+            width: 1320px;
+            margin: 0;
+        }
+
+        .section .row .customSelect {
+            width: 315px;
+            height: 800px;
+            padding: 10px;
+            margin-right: 20px;
+        }
+
+        .section .row .carCardBox{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content:space-between;
+        width: 985px;
+        }
+
+        .car-card {
+            width: 315px;
+            padding: 10px;
+        }
+
 
 
     </style>
+</head>
 <body>
 <div th:replace="~{fragments/header::header}"></div>
 <div class="section">
-
+    <div class="row">
+        <div class="customSelect">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam amet atque, delectus, hic magni minima
+                mollitia necessitatibus nihil porro ratione repudiandae ut voluptate. Assumenda maiores quis quos totam
+                ut velit?</p>
+        </div>
+        <div class="carCardBox">
+            <div th:each="car: ${cars}">
+                <div class="car-card">
+                    <a href="'/car/' +${car.id}">
+                        <img src="{car.imgUrl}" alt="${car.carNm}">
+                        <h3 th:text="${car.carBrand + ' ' + car.carName}"></h3>
+                        <p><strong>차종:</strong> <span th:text="${car.carType}"></span></p>
+                        <p><strong>색상:</strong> <span th:text="${car.carColor}"></span></p>
+                        <p><strong>연식:</strong> <span th:text="${car.carManufacturingDate}"></span></p>
+                        <p><strong>가격:</strong> <span th:text="${car.carPrice} + '원'"></span></p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div th:replace="~{fragments/footer::footer}"></div>

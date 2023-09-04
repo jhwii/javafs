@@ -61,7 +61,7 @@
               font-size: 1.6rem;
               display: inline-block;
           }
-          button {
+          .loginBtn {
               display: block;
               text-align: center;
               background: #222;
@@ -105,14 +105,20 @@
               display: flex;
           }
 
-
-
           .error-class {
             color: red;
-        }
-        .error-input {
-            border-color: red;
-        }
+          }
+
+          .error-input {
+                border-color: red;
+          }
+
+          .joinBtn{
+          border: none;
+          background: #fff;
+          }
+
+
       </style>
     </th:block>
 </head>
@@ -139,10 +145,10 @@
             <input class="check-keep" type="checkbox" id="check" name="로그인 상태유지">
             <label class="check" for="check"> </label>
             <span class="keep-txt">로그인 상태 유지</span>
-            <p><a href='@{/{loginType}/join (loginType=${loginType})}'>회원 가입</a></p>
+            <button type="button" th:onclick="|location.href='@{/{loginType}/join (loginType=${loginType})}'|" class="joinBtn">회원 가입</button>
         </div>
         <div id="loginBtn">
-            <button type="submit">로그인</button>
+            <button type="submit" class="loginBtn">로그인</button>
         </div>
     </form>
     <div class="line" ><img src="/img/Line1.png"></div>

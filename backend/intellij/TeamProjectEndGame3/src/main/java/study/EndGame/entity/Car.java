@@ -17,6 +17,7 @@ import javax.validation.constraints.NotNull;
 public class Car {
 
     @Id
+    @Column(name="car_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -54,8 +55,10 @@ public class Car {
     private String carOption;
 
     @Column(nullable = false)
-    private int carStockNumber;
+    private int carStockNumber = 1;
 
     @Enumerated(EnumType.STRING)
     private CarSellStatus carSellStatus;
+
+
 }

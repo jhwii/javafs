@@ -16,27 +16,37 @@
     <style>
 
         .section {
-            width: 50%;
-            height: 630px;
+            width: 1320px;
+            height: 800px;
             margin: 0 auto;
+            display: flex;
+            flex-direction: colum;
+            justify-content: center;
         }
 
         .section .content {
-        width: 300px;
-        margin: 32px auto;
-        border: 10px solid #000;
+            width: 1320px;
+            height: 700px;
+            border: 1px solid #000;
+            padding: 16px;
+            display: flex;
+            flex-direction: colum;
+            justify-content: space-evenly;
+        }
+
+        .section .content .contentFlex {
+            display: flex;
         }
 
         .section label {
-        display: block;
-        font-weight:bold;
-        width: 50px;
-        background: orange;
+            display: block;
+            font-weight:bold;
+            width: 50px;
+            background: orange;
         }
 
         .section input {
-        margin-bottom: 16px;
-        width: 250px;
+            width: 250px;
         }
 
 
@@ -45,59 +55,58 @@
 <body>
 <div th:replace="~{fragments/header::header}"></div>
 <div class="section">
+
     <div class="content">
-        <h2><b>차량 등록</b></h2>
         <form th:action="@{/security-login/registration}" method="post">
-            <div>
+            <div class="contentFlex">
+            <h2><b>차량 등록</b></h2>
+            </div>
+            <div class="contentFlex">
                 <label for="carBrand">브랜드:</label>
                 <input type="text" id="carBrand" name="carBrand" required><br>
-
             </div>
-            <div>
+            <div class="contentFlex">
                 <label for="carName">차량명:</label>
                 <input type="text" id="carName" name="carName" required><br>
             </div>
-            <div>
-
+            <div class="contentFlex">
+                <label for="carType">차종:</label>
+                <input type="text" id="carType" name="carType" required><br>
             </div>
-            <div>
-
+            <div class="contentFlex">
+                <label for="carColor">색깔:</label>
+                <input type="text" id="carColor" name="carColor" required><br>
             </div>
-            <div>
-
+            <div class="contentFlex">
+                <label for="carManufacturingDate">연식:</label>
+                <input type="text" id="carManufacturingDate" name="carManufacturingDate" required><br>
             </div>
-            <div>
-
+            <div class="contentFlex">
+                <label for="carPrice">가격:</label>
+                <input type="number" id="carPrice" name="carPrice" required><br>
             </div>
-            <div>
-
+            <div class="contentFlex">
+                <label for="carOption">옵션:</label>
+                <input type="text" id="carOption" name="carOption" required><br>
             </div>
-            <div>
-
+            <div th:if="${#lists.isEmpty(carRegistrationDto.carImgDtoList)}">
+                <div class="form-group" th:each="num: ${#numbers.sequence(1,5)}">
+                    <div class="custom-file img-div">
+                        <input type="file" class="custom-file-input" name="carImgFile">
+                        <label class="custom-file-label" th:text="상품이미지 + ${num}"></label>
+                    </div>
+                </div>
             </div>
-            <div>
 
+            <div th:if = "${not #lists.isEmpty(carRegistrationDto.carImgDtoList)}">
+                <div class="form-group" th:each="carImgDto, status: ${carRegistrationDto.carImgDtoList}">
+                    <div class="custom-file img-div">
+                        <input type="file" class="custom-file-input" name="carImgFile">
+                        <input type="hidden" name="carImgIds" th:value="${carImgDto.id}">
+                        <label class="custom-file-label" th:text="${not #strings.isEmpty(carImgDto.oriImgName)} ? ${carImgDto.oriImgName} : '상품이미지' + ${status.index+1}"></label>
+                    </div>
+                </div>
             </div>
-            <div>
-
-            </div>
-
-
-
-            <label for="carType">차종:</label>
-            <input type="text" id="carType" name="carType" required><br>
-
-            <label for="carColor">색깔:</label>
-            <input type="text" id="carColor" name="carColor" required><br>
-
-            <label for="carManufacturingDate">연식:</label>
-            <input type="text" id="carManufacturingDate" name="carManufacturingDate" required><br>
-
-            <label for="carPrice">가격:</label>
-            <input type="number" id="carPrice" name="carPrice" required><br>
-
-            <label for="carOption">옵션:</label>
-            <input type="text" id="carOption" name="carOption" required><br>
 
             <button type="submit">등록</button>
         </form>

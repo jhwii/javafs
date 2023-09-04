@@ -2,6 +2,9 @@ package study.EndGame.dto;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.modelmapper.ModelMapper;
+import study.EndGame.constant.CarSellStatus;
+import study.EndGame.entity.Car;
 
 import javax.persistence.Column;
 import javax.persistence.Lob;
@@ -9,6 +12,8 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -42,7 +47,23 @@ public class CarRegistrationDto {
     @NotBlank(message = "장착된 옵션을 입력해주세요.")
     private String carOption;
 
+    /* 추가 */
+    private List<CarImgDto> carImgDtoList = new ArrayList<>();
+
+    private List<Long> carImgIds = new ArrayList<>();
+
+    private static ModelMapper modelMapper = new ModelMapper();
+    public Car createCar(){
+        return modelMapper.map(this, Car.class);
+    }
+    public static CarRegistrationDto of(Car car){
+        return modelMapper.map(car,CarRegistrationDto.class);
+    }
+
+    @Column(nullable = false)
     private int carStockNumber = 1;
+
+    private String sellStatus;
 
     private String registeredBy;
     // Getter와 Setter 메서드
