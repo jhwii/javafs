@@ -1,0 +1,24 @@
+package study.EndGame.service.car;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import study.EndGame.entity.Car;
+import study.EndGame.repository.CarRepository;
+
+
+@Service
+public class CarRegistrationService {
+
+    private final CarRepository carRepository;
+
+    @Autowired
+    public CarRegistrationService(CarRepository carRepository) {
+        this.carRepository = carRepository;
+    }
+
+    public void registerCar(Car car) {
+        // 스톡 넘버에 따라 carSellStatus 업데이트
+        /*car.updateCarSellStatus();*/
+        carRepository.save(car);
+    }
+}
