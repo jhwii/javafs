@@ -12,19 +12,11 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/endgame?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&serverTimezone=Asia/Seoul
     username: root
-<<<<<<< HEAD
-    password: 1231234
-  # JPA 설정
-  jpa:
-    hibernate:
-      ddl-auto: create
-=======
     password: 1234
   # JPA 설정
   jpa:
     hibernate:
       ddl-auto: validate
->>>>>>> 19fc4596b82149e630a31db2535be8c344577f01
     show-sql: true
 
   # OAuth 로그인

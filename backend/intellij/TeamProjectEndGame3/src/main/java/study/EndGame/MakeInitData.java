@@ -22,7 +22,11 @@ public class MakeInitData {
                 .loginId("admin1")
                 .password("1234")
                 .nickname("관리자1")
+<<<<<<< HEAD
                 .role(UserRole.USER)
+=======
+                .role(UserRole.ADMIN)
+>>>>>>> 19fc4596b82149e630a31db2535be8c344577f01
                 .build();
         userRepository.save(admin1);
 
@@ -38,7 +42,11 @@ public class MakeInitData {
                 .loginId("admin2")
                 .password(encoder.encode("1234"))
                 .nickname("관리자")
+<<<<<<< HEAD
                 .role(UserRole.USER)
+=======
+                .role(UserRole.ADMIN)
+>>>>>>> 19fc4596b82149e630a31db2535be8c344577f01
                 .build();
         userRepository.save(admin2);
 

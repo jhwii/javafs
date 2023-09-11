@@ -62,7 +62,11 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
                     .nickname(nickname)
                     .provider(provider)
                     .providerId(providerId)
+<<<<<<< HEAD
                     .role(UserRole.ADMIN)
+=======
+                    .role(UserRole.USER)
+>>>>>>> 19fc4596b82149e630a31db2535be8c344577f01
                     .build();
             userRepository.save(user);
         } else {
