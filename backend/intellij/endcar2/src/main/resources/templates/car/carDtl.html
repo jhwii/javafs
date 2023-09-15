@@ -71,9 +71,9 @@
             <p><span th:text="${car.ownerName}"></span></p>
             <h3 th:text="${car.carBrand + ' ' + car.carName}">차종+차이름(제목)</h3>
             <p><strong>가격:</strong> <span th:text="${car.carPrice} + '원'"></span></p>
-            <p>화이팅!</p>
-            <button type="button">구매하기</button>
-            <!-- 버튼 구현 ? 혹은 제외 -->
+            <a th:href="'/payment/buy/' +${car.id}">
+                <button type="button">구매하기</button>
+            </a>
         </div>
     </div>
     <div class="dtl_carbox">
@@ -85,9 +85,6 @@
             <p><strong>연식:</strong> <span th:text="${car.carManufacturingDate}"></span></p>
             <p><strong>옵션:</strong> <span th:text="${car.carOption}"></span></p>
             <p><strong>상세설명:</strong> <span th:text="${car.carOption}"></span></p>
-            <a href="/payment/buy">
-                <button type="button">Buy</button>
-            </a>
             <!--        <div class="dtl_carImgBox">-->
             <!--            <img src="${car.imgUrl}" alt="Image">-->
             <!--        </div>-->

@@ -39,7 +39,7 @@ public class MainController {
         }
         return "event";
     }
-    @GetMapping(value = {"customerSupport"})
+    @GetMapping(value = {"ask"})
     public String CS(Model model, Authentication auth){
 
 
@@ -50,7 +50,7 @@ public class MainController {
             }
         }
 
-        return "customerSupport";
+        return "ask/post";
     }
 
 }
