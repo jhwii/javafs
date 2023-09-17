@@ -33,6 +33,10 @@ public class QCar extends EntityPathBase<Car> {
 
     public final StringPath carNumber = createString("carNumber");
 
+    public final NumberPath<Integer> carOdometer = createNumber("carOdometer", Integer.class);
+
+    public final StringPath carOpinion = createString("carOpinion");
+
     public final StringPath carOption = createString("carOption");
 
     public final NumberPath<Integer> carPrice = createNumber("carPrice", Integer.class);
@@ -40,6 +44,8 @@ public class QCar extends EntityPathBase<Car> {
     public final EnumPath<study.EndGame.constant.CarSellStatus> carSellStatus = createEnum("carSellStatus", study.EndGame.constant.CarSellStatus.class);
 
     public final NumberPath<Integer> carStockNumber = createNumber("carStockNumber", Integer.class);
+
+    public final StringPath carTransmission = createString("carTransmission");
 
     public final StringPath carType = createString("carType");
 

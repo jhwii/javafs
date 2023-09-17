@@ -30,7 +30,7 @@ public class QAsk extends EntityPathBase<Ask> {
 
     public final StringPath askWriter = createString("askWriter");
 
-    public final ListPath<AskComment, QAskComment> comments = this.<AskComment, QAskComment>createList("comments", AskComment.class, QAskComment.class, PathInits.DIRECT2);
+    public final ListPath<AskCommentEntity, QAskComment> comments = this.<AskCommentEntity, QAskComment>createList("comments", AskCommentEntity.class, QAskComment.class, PathInits.DIRECT2);
 
     //inherited
     public final StringPath createdBy = _super.createdBy;

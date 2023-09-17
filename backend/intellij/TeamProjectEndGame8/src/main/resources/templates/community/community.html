@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="|${pageName}|"></title>
+    <link th:href="@{/css/layout1.css}" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<!-- 사용자 CSS 추가 -->
+<th:block layout:fragment="css">
+
+</th:block>
+<body>
+<div th:replace="~{fragments/header::header}"></div>
+<div layout:fragment="content">
+    <div class="container">
+        <table class="table">
+            <thead class="thead-light">
+            <tr class="text-center">
+                <th scope="col">#</th>
+                <th scope="col">제목</th>
+                <th scope="col">작성자</th>
+                <th scope="col">작성일</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="text-center" th:each="post : ${postList}">
+                <th scope="row">
+                    <span th:text="${post.id}"></span>
+                </th>
+                <td>
+                    <a th:href="@{'/post/' + ${post.id}}">
+                        <span th:text="${post.title}"></span>
+                    </a>
+                </td>
+                <td>
+                    <span th:text="${post.author}"></span>
+                </td>
+                <td>
+                    <span th:text="${#temporals.format(post.createdDate, 'yyyy-MM-dd HH:mm')}"></span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="col-auto mr-auto"></div>
+            <div class="col-auto">
+                <a class="btn btn-primary" th:href="@{/security-login/post}" role="button">글쓰기</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div th:replace="~{fragments/footer::footer}"></div>
+</body>
+</html>

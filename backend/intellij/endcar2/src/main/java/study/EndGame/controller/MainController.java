@@ -39,18 +39,5 @@ public class MainController {
         }
         return "event";
     }
-    @GetMapping(value = {"ask"})
-    public String CS(Model model, Authentication auth){
-
-
-        if(auth != null) {
-            User loginUser = userService.getLoginUserByLoginId(auth.getName());
-            if (loginUser != null) {
-                model.addAttribute("nickname", loginUser.getNickname());
-            }
-        }
-
-        return "ask/post";
-    }
 
 }

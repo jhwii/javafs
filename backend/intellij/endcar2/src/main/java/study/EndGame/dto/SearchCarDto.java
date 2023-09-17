@@ -18,8 +18,6 @@ public class SearchCarDto {
 
     private Integer price;
 
-
-
     @QueryProjection
     public SearchCarDto(Long id, String carName, String carOption, String imgUrl, Integer price) {
         this.id = id;

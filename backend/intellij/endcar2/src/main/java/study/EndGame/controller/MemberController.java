@@ -71,6 +71,22 @@ public class MemberController {
         return "info";
     }
 
+/*
+@GetMapping("/info")
+    //@PreAuthorize("hasAnyAuthority('ADMIN', 'USER')")
+    public String userInfo(Model model, Authentication auth, @PathVariable("carId") Long carId, @PathVariable Long id, @RequestParam Long postId ) {
+
+        User loginUser = userService.getLoginUserByLoginId(auth.getName());
+        CarRegistrationDto carRegistrationDto = carService.getCarDtl(carId);
+        CommunityDto communityDto = communityService.findById(id);
+        List<CommentDto> commentDtoList = commentService.findAll(postId);
+        model.addAttribute("user", loginUser); //사용자 정보
+        model.addAttribute("carRegistrationDto", new CarRegistrationDto()); //차량 정보
+
+        return "info";
+    }
+    */
+
     @GetMapping("/admin")
     //@PreAuthorize("hasAuthority('ADMIN')")
     public String adminPage() {

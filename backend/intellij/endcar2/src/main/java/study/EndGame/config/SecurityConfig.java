@@ -34,6 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/security-login/info").authenticated()
                 .antMatchers("/security-login/registration").authenticated()
                 .antMatchers("/security-login/community").authenticated()
+                .antMatchers("/ask/post").authenticated()
                 // 인가
                 .antMatchers("/security-login/admin/**").hasAuthority(UserRole.ADMIN.name())
                 .mvcMatchers("/", "/members/**", "/item/**", "/images/**").permitAll() // 이 부분 추가

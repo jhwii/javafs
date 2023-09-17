@@ -27,9 +27,6 @@ public class CommunityController {
     private final CommentService commentService;
     private final UserService userService;
 
-
-
-
     @GetMapping("/community/save")
     public String saveForm(Model model, Authentication auth){
 

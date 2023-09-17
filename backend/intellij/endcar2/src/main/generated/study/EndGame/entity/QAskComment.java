@@ -14,7 +14,7 @@ import com.querydsl.core.types.dsl.PathInits;
  * QAskComment is a Querydsl query type for AskComment
  */
 @Generated("com.querydsl.codegen.DefaultEntitySerializer")
-public class QAskComment extends EntityPathBase<AskComment> {
+public class QAskComment extends EntityPathBase<AskCommentEntity> {
 
     private static final long serialVersionUID = 1571751019L;
 
@@ -51,10 +51,10 @@ public class QAskComment extends EntityPathBase<AskComment> {
     public final DateTimePath<java.time.LocalDateTime> updateTime = _super.updateTime;
 
     public QAskComment(String variable) {
-        this(AskComment.class, forVariable(variable), INITS);
+        this(AskCommentEntity.class, forVariable(variable), INITS);
     }
 
-    public QAskComment(Path<? extends AskComment> path) {
+    public QAskComment(Path<? extends AskCommentEntity> path) {
         this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
     }
 
@@ -63,10 +63,10 @@ public class QAskComment extends EntityPathBase<AskComment> {
     }
 
     public QAskComment(PathMetadata metadata, PathInits inits) {
-        this(AskComment.class, metadata, inits);
+        this(AskCommentEntity.class, metadata, inits);
     }
 
-    public QAskComment(Class<? extends AskComment> type, PathMetadata metadata, PathInits inits) {
+    public QAskComment(Class<? extends AskCommentEntity> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
         this.ask = inits.isInitialized("ask") ? new QAsk(forProperty("ask")) : null;
     }

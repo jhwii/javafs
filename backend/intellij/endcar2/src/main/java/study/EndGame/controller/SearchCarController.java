@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import study.EndGame.dto.CarRegistrationDto;
 import study.EndGame.dto.CarSearchDto;
 import study.EndGame.dto.SearchCarDto;
+import study.EndGame.entity.Car;
 import study.EndGame.entity.User;
 import study.EndGame.service.UserService;
 import study.EndGame.service.car.CarService;
@@ -51,5 +52,8 @@ public class SearchCarController {
         model.addAttribute("car", carRegistrationDto);
         return "car/carDtl";
     }
+
+
+
 
 }

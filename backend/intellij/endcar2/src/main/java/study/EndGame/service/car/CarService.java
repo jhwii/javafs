@@ -13,7 +13,6 @@ import study.EndGame.dto.CarImgDto;
 import study.EndGame.dto.CarRegistrationDto;
 import study.EndGame.dto.CarSearchDto;
 import study.EndGame.dto.SearchCarDto;
-import study.EndGame.dto.auth.MainCarDto;
 import study.EndGame.entity.Car;
 import study.EndGame.entity.CarImg;
 import study.EndGame.repository.CarImgRepository;

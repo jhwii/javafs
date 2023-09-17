@@ -89,8 +89,8 @@
             margin-top: 16px;
         }
 
-        .contentInnerBox:nth-of-type(10) {
-            margin-bottom: 16px;
+        .contentInnerBox:nth-of-type(13) {
+            margin-bottom: 32px;
         }
 
 
@@ -127,10 +127,20 @@
         .custom-file-label{height: 35px; border: 1px solid #c4c4c4; font-size:1.6rem; }
 
         .submitBtn {
-        width: 100px;
-        height: 30px;
+            width: 100px;
+            height: 30px;
         }
 
+        .custom-file {
+            width: 516px;
+            margin-bottom: 16px;
+            align-items: center;
+        }
+
+        .custom-file label, .custom-file input {
+            display: block;
+            width: 200px;
+        }
 
     </style>
 </head>
@@ -200,6 +210,16 @@
                     </select>
                 </div>
                 <div class="contentInnerBox">
+                    <label for="carTransmission"><span>* </span>변속기:</label>
+                    <select id="carTransmission" name="carTransmission" required>
+                        <option value="오토">오토</option>
+                        <option value="수동">수동</option>
+                        <option value="세미오토">세미오토</option>
+                        <option value="CVT">CVT</option>
+                        <option value="기타">기타</option>
+                    </select>
+                </div>
+                <div class="contentInnerBox">
                     <label for="carFuelType"><span>* </span>연료:</label>
                     <select id="carFuelType" name="carFuelType" required>
                         <option value="">연료를 입력해주세요</option>
@@ -264,29 +284,78 @@
                     </select>
                 </div>
                 <div class="contentInnerBox">
+                    <label for="carOdometer"><span>* </span>주행거리:</label>
+                    <select id="carOdometer" name="carOdometer" required>
+                        <option value="">주행 거리를 선택해주세요</option>
+                        <option value="10000">10,000 km 이하</option>
+                        <option value="20000">20,000 km 이하</option>
+                        <option value="30000">30,000 km 이하</option>
+                        <option value="40000">40,000 km 이하</option>
+                        <option value="50000">50,000 km 이하</option>
+                        <option value="60000">60,000 km 이하</option>
+                        <option value="70000">70,000 km 이하</option>
+                        <option value="80000">80,000 km 이하</option>
+                        <option value="90000">90,000 km 이하</option>
+                        <option value="100000">10,000 km 이하</option>
+                        <option value="110000">11,000 km 이하</option>
+                        <option value="120000">12,000 km 이하</option>
+                        <option value="130000">13,000 km 이하</option>
+                        <option value="140000">14,000 km 이하</option>
+                        <option value="150000">15,000 km 이하</option>
+                        <option value="160000">16,000 km 이하</option>
+                        <option value="170000">17,000 km 이하</option>
+                        <option value="180000">18,000 km 이하</option>
+                        <option value="190000">19,000 km 이하</option>
+                        <option value="200000">20,000 km 이하</option>
+                    </select>
+                </div>
+                <div class="contentInnerBox">
                     <label for="carPrice"><span>* </span>금액:</label>
                     <input type="number" placeholder="금액" id="carPrice" name="carPrice" required>
                 </div>
                 <div class="contentInnerBox">
-                    <label for="carOption"><span>* </span>상세설명:</label>
-                    <input type="text" placeholder="상세 설명을 작성해 주세요." id="carOption" name="carOption" required><br>
+                    <label for="carOption"><span>* </span>옵션:</label>
+                    <select id="carOption" name="carOption" required>
+                        <option value="">옵션을 선택해주세요</option>
+                        <option value="선루프">선루프</option>
+                        <option value="헤드램프">헤드램프</option>
+                        <option value="파워 전동 트렁크">파워 전동 트렁크</option>
+                        <option value="고스트 도어 클로징">고스트 도어 클로징</option>
+                        <option value="전동접이 사이드 미러">전동접이 사이드 미러</option>
+                        <option value="알루미늄 휠">알루미늄 휠</option>
+                        <option value="루프랙">루프랙</option>
+                        <option value="열선 스티어링 휠">열선 스티어링 휠</option>
+                        <option value="전동 조절 스티어링 휠">전동 조절 스티어링 휠</option>
+                        <option value="패들 시프트">패들 시프트</option>
+                        <option value="스티어링 휠 리모컨">스티어링 휠 리모컨</option>
+                        <option value="하이패스">하이패스</option>
+                        <option value="파워 도어록">파워 도어록</option>
+                        <option value="파워 스티어링 휠">파워 스티어링 휠</option>
+                        <option value="파워 윈도우">파워 윈도우</option>
+                    </select>
                 </div>
-
+                <div class="contentInnerBox">
+                    <label for="carOpinion">사용자 의견:</label>
+                    <input type="text" placeholder="사용했던 용도 및 기타참고 사항을 기재해 주세요." id="carOpinion" name="carOpinion"
+                           required>
+                </div>
                 <div th:if="${#lists.isEmpty(carRegistrationDto.carImgDtoList)}">
                     <div class="form-group" th:each="num: ${#numbers.sequence(1,5)}">
                         <div class="custom-file img-div">
+                            <label class="custom-file-label" th:text="차량이미지 + ${num}"></label>
                             <input type="file" class="custom-file-input" name="carImgFile">
-                            <label class="custom-file-label" th:text="상품이미지 + ${num}"></label>
                         </div>
                     </div>
                 </div>
                 <div th:if="${not #lists.isEmpty(carRegistrationDto.carImgDtoList)}">
                     <div class="form-group" th:each="carImgDto, status: ${carRegistrationDto.carImgDtoList}">
                         <div class="custom-file img-div">
+                            <label class="custom-file-label"
+                                   th:text="${not #strings.isEmpty(carImgDto.oriImgName)} ? ${carImgDto.oriImgName} : '차량이미지' + ${status.index+1}">
+                            </label>
                             <input type="file" class="custom-file-input" name="carImgFile">
                             <input type="hidden" name="carImgIds" th:value="${carImgDto.id}">
-                            <label class="custom-file-label"
-                                   th:text="${not #strings.isEmpty(carImgDto.oriImgName)} ? ${carImgDto.oriImgName} : '상품이미지' + ${status.index+1}"></label>
+
                         </div>
                     </div>
                 </div>

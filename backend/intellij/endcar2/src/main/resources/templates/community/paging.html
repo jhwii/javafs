@@ -8,59 +8,129 @@
   <title th:text="|${pageName}|"></title>
   <link th:href="@{/css/layout1.css}" rel="stylesheet">
   <style>
-        table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+  * {
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 10px;
 }
 
-th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.board_wrap {
+  width: 1000px;
+  margin: 100px auto;
 }
 
-tr:nth-child(even) {
-    background-color: #f2f2f2;
+.board_title {
+  margin-bottom: 30px;
 }
 
-th {
-    background-color: #4CAF50;
-    color: white;
+.board_title strong {
+  font-size: 3rem;
 }
 
-/* 글작성 버튼 스타일 */
-button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    margin-bottom: 20px;
-    cursor: pointer;
+.board_title p {
+  margin-top: 5px;
+  font-size: 1.4rem;
 }
 
-/* 페이지 번호 스타일 */
-.pagination {
-    display: inline-block;
-    margin-top: 10px;
+.bt_wrap {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 0;
 }
 
-.pagination a {
-    color: black;
-    float: left;
-    padding: 8px 16px;
-    text-decoration: none;
-    transition: background-color .3s;
+.bt_wrap button {
+  display: inline-block;
+  min-width: 80px;
+  margin-left: 0px;
+  padding: 10px;
+  border: 1px solid #000;
+  border-radius: 2px;
+  font-size: 1.4rem;
+  cursor: pointer;
+  background: #000;
+  color: #fff;
 }
 
-.pagination a.active {
-    background-color: #4CAF50;
-    color: white;
+
+
+.board_list {
+  width: 100%;
+  border-top: 2px solid #000;
+}
+ td {
+  border-bottom: 1px solid #ddd;
+    text-align: center;
+
 }
 
-.pagination a:hover:not(.active) {
-    background-color: #ddd;
+
+.board_list > tr > th {
+  display: inline-block;
+  padding: 15px 0;
+  text-align: center;
+  font-size: 1.4rem;
 }
+
+.board_list > tr.top > th {
+  font-weight: 600;
+}
+
+.board_list th {
+  width: 10%;
+}
+.board_list .title {
+  width: 60%;
+  text-align: left;
+}
+.board_list .top .title {
+  text-align: center;
+}
+
+.board_page {
+  margin-top: 30px;
+  text-align: center;
+
+}
+
+.board_page a {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  box-sizing: border-box;
+  vertical-align: middle;
+  border: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  line-height: 100%;
+   padding-top: 9px;
+  font-size: 1.4rem;
+}
+
+
+
+.board_page .on {
+display: inline-block;
+  width: 32px;
+  height: 32px;
+  box-sizing: border-box;
+  vertical-align: middle;
+  border: 1px solid #ddd;
+  border-left: 0;
+  line-height: 100%;
+   padding-top: 9px;
+  font-size: 1.4rem;
+  border-color: #000;
+  background: #000;
+  color: #fff;
+}
+
+
     </style>
 
 </head>
@@ -68,49 +138,55 @@ button {
 <body>
 <div th:replace="~{fragments/header::header}"></div>
 <div layout:fragment="content">
-  <button onclick="saveReq()">글작성</button>
-  <table>
-    <tr>
-      <th>번호</th>
-      <th>제목</th>
-      <th>작성자</th>
-      <th>날짜</th>
-      <th>조회수</th>
-    </tr>
-    <tr th:each="community: ${communityList}">
-      <td th:text="${community.id}"></td>
-      <td><a th:href="@{|/security-login/community/${community.id}|(page=${communityList.number + 1})}" th:text="${community.communityTitle}"></a></td>
-      <td th:text="${community.communityWriter}"></td>
-      <td th:text="*{#temporals.format(community.communityCreatedTime, 'yyyy-MM-dd HH:mm')}"></td>
-      <td th:text="${community.communityHits}"></td>
-    </tr>
-  </table>
-  <!-- 첫번째 페이지로 이동 -->
-  <!-- /board/paging?page=1 -->
-  <a th:href="@{/security-login/community(page=1)}">First</a>
-  <!-- 이전 링크 활성화 비활성화 -->
-  <!-- boardList.getNumber() 사용자:2페이지 getNumber()=1 -->
-  <a th:href="${communityList.first} ? '#' : @{/security-login/community(page=${communityList.number})}">prev</a>
+  <div class="board_wrap">
+    <div class="board_title">
+      <strong>커뮤니티</strong>
+      <p>여기서는 자유롭게 이야기하고 정보를 공유할 수 있어요!</p>
+    </div>
+    <table class="board_list">
+      <tr class="top">
+        <th>번호</th>
+        <th class="title">제목</th>
+        <th>작성자</th>
+        <th>날짜</th>
+        <th>조회수</th>
+      </tr>
+      <tr th:each="community: ${communityList}">
+        <td th:text="${community.id}"></td>
+        <td class="title"><a th:href="@{|/security-login/community/${community.id}|(page=${communityList.number + 1})}" th:text="${community.communityTitle}"></a></td>
+        <td th:text="${community.communityWriter}"></td>
+        <td th:text="*{#temporals.format(community.communityCreatedTime, 'yyyy-MM-dd HH:mm')}"></td>
+        <td th:text="${community.communityHits}"></td>
+      </tr>
+    </table>
 
-  <!-- 페이지 번호 링크(현재 페이지는 숫자만)
-          for(int page=startPage; page<=endPage; page++)-->
-  <span th:each="page: ${#numbers.sequence(startPage, endPage)}">
-<!-- 현재페이지는 링크 없이 숫자만 -->
-    <span th:if="${page == communityList.number + 1}" th:text="${page}"></span>
-    <!-- 현재페이지 번호가 아닌 다른 페이지번호에는 링크를 보여줌 -->
-    <span th:unless="${page == communityList.number + 1}">
-        <a th:href="@{/security-login/community(page=${page})}" th:text="${page}"></a>
-    </span>
-</span>
+    <div class="board_page">
+      <!-- 첫번째 페이지로 이동 -->
+      <a th:href="@{/security-login/community(page=1)}">First</a>
+      <!-- 이전 링크 활성화 비활성화 -->
+      <a th:href="${communityList.first} ? '#' : @{/security-login/community(page=${communityList.number})}">prev</a>
 
-  <!-- 다음 링크 활성화 비활성화
-      사용자: 2페이지, getNumber: 1, 3페이지-->
-  <a th:href="${communityList.last} ? '#' : @{/security-login/community(page=${communityList.number + 2})}">next</a>
-  <!-- 마지막 페이지로 이동 -->
-  <a th:href="@{/security-login/community(page=${communityList.totalPages})}">Last</a>
+      <!-- 페이지 번호 링크(현재 페이지는 숫자만)
+              for(int page=startPage; page<=endPage; page++)-->
+      <span th:each="page: ${#numbers.sequence(startPage, endPage)}">
+    <!-- 현재페이지는 링크 없이 숫자만 -->
+        <span class="on" th:if="${page == communityList.number + 1}" th:text="${page}"></span>
+        <!-- 현재페이지 번호가 아닌 다른 페이지번호에는 링크를 보여줌 -->
+        <span th:unless="${page == communityList.number + 1}">
+            <a th:href="@{/security-login/community(page=${page})}" th:text="${page}"></a>
+        </span>
+      </span>
+      <!-- 다음 링크 활성화 비활성화
+          사용자: 2페이지, getNumber: 1, 3페이지-->
+      <a th:href="${communityList.last} ? '#' : @{/security-login/community(page=${communityList.number + 2})}">next</a>
+      <!-- 마지막 페이지로 이동 -->
+      <a th:href="@{/security-login/community(page=${communityList.totalPages})}">Last</a>
+    </div>
 
-
-
+    <div class="bt_wrap">
+      <button onclick="saveReq()">글작성</button>
+    </div>
+  </div>
 </div>
 <div th:replace="~{fragments/footer::footer}"></div>
 <script>

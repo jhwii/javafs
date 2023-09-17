@@ -58,6 +58,7 @@
 
         .dtl_text p{font-size: 2rem;}
         .dtl_carImgBox img{ width: 500px; height: 400px; border: 1px solid #E9ECEF; }
+
     </style>
 </head>
 <body>
@@ -66,9 +67,8 @@
 <div class="dtl_section">
     <div class="dtl_carRep">
         <img th:src="${car.carImgDtoList[0].imgUrl}" alt="Image">
-        <!--        <img src="${car.imgUrl}" alt="Image">-->
         <div class="dtl_carRepTxt">
-            <p><span th:text="${car.ownerName}"></span></p>
+            <p><strong>판매자:</strong> <span th:text="${car.ownerName}"></span></p>
             <h3 th:text="${car.carBrand + ' ' + car.carName}">차종+차이름(제목)</h3>
             <p><strong>가격:</strong> <span th:text="${car.carPrice} + '원'"></span></p>
             <a th:href="'/payment/buy/' +${car.id}">
@@ -85,9 +85,7 @@
             <p><strong>연식:</strong> <span th:text="${car.carManufacturingDate}"></span></p>
             <p><strong>옵션:</strong> <span th:text="${car.carOption}"></span></p>
             <p><strong>상세설명:</strong> <span th:text="${car.carOption}"></span></p>
-            <!--        <div class="dtl_carImgBox">-->
-            <!--            <img src="${car.imgUrl}" alt="Image">-->
-            <!--        </div>-->
+
             <div th:each="carImg : ${car.carImgDtoList}" class="dtl_carImgBox">
                 <img th:if="${not #strings.isEmpty(carImg.imgUrl)}" th:src="${carImg.imgUrl}" alt="Image">
             </div>

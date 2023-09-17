@@ -35,6 +35,9 @@ public class CarRegistrationDto {
     @NotBlank(message = "차종을 입력해주세요.")
     private String carType;
 
+    @NotBlank(message = "변속기 종류를 입력해주세요.")
+    private String carTransmission;
+
     @NotBlank(message = "연료 종류 입력해주세요.")
     private String carFuelType;
 
@@ -46,16 +49,20 @@ public class CarRegistrationDto {
     @Min(value = 2005, message = "연식은 2005년 보다 큰 값이어야 합니다.")
     private int carManufacturingDate;
 
+    @NotNull(message = "주행거리를 입력해주세요.")
+    private int carOdometer;
+
     @NotNull(message = "가격을 입력해주세요.")
     @Max(value = 999999999, message = "가격은 999999999 보다 작은 값이어야 합니다.")
     @Min(value = 0, message = "가격은 0보다 큰 값이어야 합니다.")
     private int carPrice;
 
-    @Lob
     @Column(nullable = false)
-    @NotBlank(message = "장착된 옵션을 입력해주세요.")
     private String carOption;
 
+    @Lob
+    @Column(nullable = false, columnDefinition = "TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci")
+    private String carOpinion;
 
     /* 추가 */
     private List<CarImgDto> carImgDtoList = new ArrayList<>();
