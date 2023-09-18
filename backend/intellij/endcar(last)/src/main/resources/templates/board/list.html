@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="|${pageName}|"></title>
+    <!-- CSS only -->
+
+    <link th:href="@{/css/layout1.css}" rel="stylesheet">
+    <!-- font-awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="/js/footer.js"></script>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+          integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link th:href="@{/css/layout1.css}" rel="stylesheet">
+    <style>
+        .section {
+            width: 100%;
+            min-height: 630px;
+            padding: 32px 0;
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section .container {
+            width: 1320px;
+            height: 566px;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="~{fragments/header::header}"></div>
+<div class="section">
+    <div role="main" class="container">
+        <div class="starter-template">
+
+            <table class="table table-bordered">
+                <!-- CONTENTS !-->
+                <thead>
+                <tr>
+                    <th class="col-md-1">번호</th>
+                    <th class="col-md-3">글제목</th>
+                    <th class="col-md-3">작성자</th>
+                    <th class="col-md-2">작성일</th>
+                    <th class="col-md-2">수정일</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <!-- CONTENTS !-->
+                <tr th:each="board : ${boardList}">
+                    <td th:text="${board.id}"></td>
+                    <td><a th:href="'/security-login/board/write/'+${board.id}" th:text="${board.title}"></a></td>
+                    <td th:text="${board.writer}"></td>
+                    <td th:text="${board.createdDate} ? ${#temporals.format(board.createdDate,'yyyy-MM-dd HH:mm')} : ${board.createdDate}"></td>
+                    <td th:text="${board.modifiedDate} ? ${#temporals.format(board.modifiedDate,'yyyy-MM-dd HH:mm')} : ${board.modifiedDate}"></td>
+
+                </tr>
+                </tbody>
+            </table>
+            <!-- Pagination -->
+            <div style="margin: 10px">
+            <span th:each="pageNum : ${pageList}" th:inline="text">
+                <a th:href="@{'/security-login/board/list/?page=' + ${pageNum}}">[[${pageNum}]]</a>
+            </span>
+                <!-- 글쓰기 버튼 -->
+                <a style="float: right" class="btn btn-primary" th:href="@{/security-login/board/write}">글쓰기</a>
+            </div>
+
+            <!-- 검색 form -->
+            <form th:action="@{/security-login/board/search}" method="GET">
+                <div>
+                    <input name="keyword" type="text" placeholder="검색어를 입력해주세요.">
+                    <button class="btn btn-primary">검색하기</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+<div th:replace="~{fragments/footer::footer}"></div>
+</body>
+</html>
