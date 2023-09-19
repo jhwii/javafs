@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="|${pageName}|"></title>
+    <link th:href="@{/css/layout1.css}" rel="stylesheet">
+</head>
+
+<body>
+<div th:replace="~{fragments/header::header}"></div>
+<div layout:fragment="content">
+    <form action="/security-login/ask/update" method="post" name="updateForm">
+        <input type="hidden" name="id" th:value="${askUpdate.id}">
+        작성자: <input type="text" name="askWriter" th:value="${askUpdate.askWriter}" readonly> <br>
+        비밀번호: <input type="text" name="askPass" id="askPass"> <br>
+        제목: <input type="text" name="askTitle" th:value="${askUpdate.askTitle}"> <br>
+        내용: <textarea name="askContents" cols="30" rows="10" th:text="${askUpdate.askContents}"></textarea> <br>
+        <input type="hidden" name="askHits" th:value="${askUpdate.askHits}">
+        <input type="button" value="글수정" onclick="askUpdate()">
+    </form>
+
+
+</div>
+<div th:replace="~{fragments/footer::footer}"></div>
+
+<script th:inline="javascript">
+  const askUpdate = () => {
+    const pass = [[${askUpdate.askPass}]];
+    const inputPass = document.getElementById("askPass").value;
+    if (pass == inputPass) {
+      document.updateForm.submit();
+    } else {
+      alert("비밀번호가 일치하지 않습니다!");
+    }
+  }
+</script>
+</body>
+</html>
