@@ -106,8 +106,11 @@ public class CarRepositoryCustomImpl implements CarRepositoryCustom {
                 .select(
                         new QSearchCarDto(
                                 car.id,
+                                car.carBrand,
                                 car.carName,
-                                car.carOption,
+                                car.carManufacturingDate,
+                                car.carOdometer,
+                                car.carFuelType,
                                 carImg.imgUrl,
                                 car.price)
                 )

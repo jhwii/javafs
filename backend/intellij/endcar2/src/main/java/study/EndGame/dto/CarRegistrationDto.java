@@ -64,7 +64,14 @@ public class CarRegistrationDto {
     @Column(nullable = false, columnDefinition = "TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci")
     private String carOpinion;
 
-    /* 추가 */
+    @Column(nullable = false)
+    private String carAccidentHistory;
+
+    @Column(nullable = false)
+    private int carStockNumber;
+
+    private String sellStatus;
+
     private List<CarImgDto> carImgDtoList = new ArrayList<>();
 
     private List<Long> carImgIds = new ArrayList<>();
@@ -77,11 +84,5 @@ public class CarRegistrationDto {
         return modelMapper.map(car,CarRegistrationDto.class);
     }
 
-    @Column(nullable = false)
-    private int carStockNumber;
-
-    private String sellStatus;
-
     private String registeredBy;
-    // Getter와 Setter 메서드
 }

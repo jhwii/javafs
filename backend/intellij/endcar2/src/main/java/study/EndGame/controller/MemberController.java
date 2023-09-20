@@ -39,8 +39,8 @@ public class MemberController {
             bindingResult.addError(new FieldError("joinRequest", "loginId", "로그인 아이디가 중복됩니다."));
         }
         // 닉네임 중복 체크
-        if(userService.checkNicknameDuplicate(joinRequest.getNickname())) {
-            bindingResult.addError(new FieldError("joinRequest", "nickname", "닉네임이 중복됩니다."));
+        if(userService.checkNameDuplicate(joinRequest.getName())) {
+            bindingResult.addError(new FieldError("joinRequest", "name", "닉네임이 중복됩니다."));
         }
         // password와 passwordCheck가 같은지 체크
         if(!joinRequest.getPassword().equals(joinRequest.getPasswordCheck())) {
@@ -62,8 +62,14 @@ public class MemberController {
     }
 
     @GetMapping("/info")
-    //@PreAuthorize("hasAnyAuthority('ADMIN', 'USER')")
     public String userInfo(Model model, Authentication auth) {
+
+        if(auth != null) {
+            User loginUser = userService.getLoginUserByLoginId(auth.getName());
+            if (loginUser != null) {
+                model.addAttribute("name", loginUser.getName());
+            }
+        }
 
         User loginUser = userService.getLoginUserByLoginId(auth.getName());
         model.addAttribute("user", loginUser);
@@ -71,25 +77,16 @@ public class MemberController {
         return "info";
     }
 
-/*
-@GetMapping("/info")
-    //@PreAuthorize("hasAnyAuthority('ADMIN', 'USER')")
-    public String userInfo(Model model, Authentication auth, @PathVariable("carId") Long carId, @PathVariable Long id, @RequestParam Long postId ) {
-
-        User loginUser = userService.getLoginUserByLoginId(auth.getName());
-        CarRegistrationDto carRegistrationDto = carService.getCarDtl(carId);
-        CommunityDto communityDto = communityService.findById(id);
-        List<CommentDto> commentDtoList = commentService.findAll(postId);
-        model.addAttribute("user", loginUser); //사용자 정보
-        model.addAttribute("carRegistrationDto", new CarRegistrationDto()); //차량 정보
-
-        return "info";
-    }
-    */
-
     @GetMapping("/admin")
-    //@PreAuthorize("hasAuthority('ADMIN')")
-    public String adminPage() {
+    public String adminPage(Model model, Authentication auth) {
+
+        if(auth != null) {
+            User loginUser = userService.getLoginUserByLoginId(auth.getName());
+            if (loginUser != null) {
+                model.addAttribute("name", loginUser.getName());
+            }
+        }
+
         return "admin";
     }
 

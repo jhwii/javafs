@@ -12,8 +12,8 @@ import study.EndGame.dto.CarRegistrationDto;
 import study.EndGame.entity.User;
 import study.EndGame.service.AuthenticationFacade;
 import study.EndGame.service.UserService;
-import study.EndGame.service.car.CarRegistrationService;
-import study.EndGame.service.car.CarService;
+import study.EndGame.service.CarRegistrationService;
+import study.EndGame.service.CarService;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -37,7 +37,7 @@ public class CarRegistrationController {
         if(auth != null) {
             User loginUser = userService.getLoginUserByLoginId(auth.getName());
             if (loginUser != null) {
-                model.addAttribute("nickname", loginUser.getNickname());
+                model.addAttribute("name", loginUser.getName());
             }
         }
 

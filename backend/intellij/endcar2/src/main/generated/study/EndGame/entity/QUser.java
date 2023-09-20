@@ -23,7 +23,7 @@ public class QUser extends EntityPathBase<User> {
 
     public final StringPath loginId = createString("loginId");
 
-    public final StringPath nickname = createString("nickname");
+    public final StringPath name = createString("name");
 
     public final StringPath password = createString("password");
 

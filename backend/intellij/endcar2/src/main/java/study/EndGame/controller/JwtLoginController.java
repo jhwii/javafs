@@ -33,7 +33,7 @@ public class JwtLoginController {
         if(auth != null) {
             User loginUser = userService.getLoginUserByLoginId(auth.getName());
             if (loginUser != null) {
-                model.addAttribute("nickname", loginUser.getNickname());
+                model.addAttribute("name", loginUser.getName());
             }
         }
 
@@ -53,8 +53,8 @@ public class JwtLoginController {
             bindingResult.addError(new FieldError("joinRequest", "loginId", "로그인 아이디가 중복됩니다."));
         }
         // 닉네임 중복 체크
-        if(userService.checkNicknameDuplicate(joinRequest.getNickname())) {
-            bindingResult.addError(new FieldError("joinRequest", "nickname", "닉네임이 중복됩니다."));
+        if(userService.checkNameDuplicate(joinRequest.getName())) {
+            bindingResult.addError(new FieldError("joinRequest", "name", "닉네임이 중복됩니다."));
         }
         // password와 passwordCheck가 같은지 체크
         if(!joinRequest.getPassword().equals(joinRequest.getPasswordCheck())) {

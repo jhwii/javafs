@@ -8,15 +8,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import study.EndGame.dto.CarRegistrationDto;
 import study.EndGame.dto.toss.PaymentReq;
 import study.EndGame.dto.toss.SimplePaymentResponse;
 import study.EndGame.entity.User;
 import study.EndGame.service.UserService;
-import study.EndGame.service.car.CarService;
-import study.EndGame.service.toss.PaymentService;
+import study.EndGame.service.CarService;
+import study.EndGame.service.PaymentService;
 
 @Controller
 @RequiredArgsConstructor
@@ -32,7 +31,7 @@ public class PaymentTestController {
         if(auth != null) {
             User loginUser = userService.getLoginUserByLoginId(auth.getName());
             if (loginUser != null) {
-                model.addAttribute("nickname", loginUser.getNickname());
+                model.addAttribute("name", loginUser.getName());
             }
         }
         CarRegistrationDto carRegistrationDto = carService.getCarDtl(carId);

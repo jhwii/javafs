@@ -2,13 +2,13 @@ package study.EndGame.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import study.EndGame.community.Community;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
 @Setter
-@Table(name = "community_file_table")
 public class FileEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +21,7 @@ public class FileEntity extends BaseEntity {
     private String storedFileName;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "community_id")
+    @JoinColumn(name = "community_id", insertable=false, updatable=false)
     private Community community;
 
     public static FileEntity toFileEntity(Community community, String originalFileName, String storedFileName) {

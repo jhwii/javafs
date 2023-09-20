@@ -3,8 +3,8 @@ package study.EndGame.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
-import study.EndGame.dto.auth.JwtTokenUtil;
 import study.EndGame.dto.JoinRequest;
+import study.EndGame.dto.auth.JwtTokenUtil;
 import study.EndGame.dto.LoginRequest;
 import study.EndGame.entity.User;
 import study.EndGame.service.UserService;
@@ -24,7 +24,7 @@ public class JwtLoginApiController {
             return "로그인 아이디가 중복됩니다.";
         }
         // 닉네임 중복 체크
-        if(userService.checkNicknameDuplicate(joinRequest.getNickname())) {
+        if(userService.checkNameDuplicate(joinRequest.getName())) {
             return "닉네임이 중복됩니다.";
         }
         // password와 passwordCheck가 같은지 체크
@@ -60,8 +60,8 @@ public class JwtLoginApiController {
     public String userInfo(Authentication auth) {
         User loginUser = userService.getLoginUserByLoginId(auth.getName());
 
-        return String.format("loginId : %s\nnickname : %s\nrole : %s",
-                loginUser.getLoginId(), loginUser.getNickname(), loginUser.getRole().name());
+        return String.format("loginId : %s\nname : %s\nrole : %s",
+                loginUser.getLoginId(), loginUser.getName(), loginUser.getRole().name());
     }
 
     @GetMapping("/admin")

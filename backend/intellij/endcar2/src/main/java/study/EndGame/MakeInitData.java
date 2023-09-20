@@ -21,7 +21,7 @@ public class MakeInitData {
         User admin1 = User.builder()
                 .loginId("admin1")
                 .password("1234")
-                .nickname("관리자1")
+                .name("관리자1")
                 .role(UserRole.ADMIN)
                 .build();
         userRepository.save(admin1);
@@ -29,7 +29,7 @@ public class MakeInitData {
         User user1 = User.builder()
                 .loginId("user1")
                 .password("1234")
-                .nickname("User1")
+                .name("User1")
                 .role(UserRole.USER)
                 .build();
         userRepository.save(user1);
@@ -37,7 +37,7 @@ public class MakeInitData {
         User admin2 = User.builder()
                 .loginId("admin2")
                 .password(encoder.encode("1234"))
-                .nickname("관리자")
+                .name("관리자")
                 .role(UserRole.ADMIN)
                 .build();
         userRepository.save(admin2);
@@ -45,7 +45,7 @@ public class MakeInitData {
         User user2 = User.builder()
                 .loginId("user")
                 .password(encoder.encode("1234"))
-                .nickname("유저1")
+                .name("유저1")
                 .role(UserRole.USER)
                 .build();
         userRepository.save(user2);

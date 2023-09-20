@@ -13,10 +13,6 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <script src="/js/footer.js"></script>
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-          integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link th:href="@{/css/layout1.css}" rel="stylesheet">
     <style>
@@ -26,6 +22,11 @@
             margin: 0 auto;
             position: relative;
             padding: 32px 0;
+        }
+
+        .fixed p{
+            position: fixed;
+            right: 0;
         }
 
         select {
@@ -70,14 +71,6 @@
             font-size: 3rem;
         }
 
-        .carTitle {
-            width: 550px;
-            margin: 0 auto;
-            margin-bottom: 16px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid #c4c4c4;
-        }
-
         .contentBox {
             width: 550px;
             margin: 0 auto;
@@ -89,7 +82,7 @@
             margin-top: 16px;
         }
 
-        .contentInnerBox:nth-of-type(13) {
+        .contentInnerBox:nth-of-type(14) {
             margin-bottom: 32px;
         }
 
@@ -109,10 +102,10 @@
 
         }
 
-        .contentInnerBox input,.opinionBox input{
+        .contentInnerBox input{
             width: 100%;
             height: 60px;
-            border: 1px solid #dddddd !important;
+            border: 1px solid #ddd;
             font-size: 1.4rem;
             line-height: 1.45;
             letter-spacing: -0.04rem;
@@ -127,19 +120,32 @@
         .custom-file-label{height: 35px; border: 1px solid #c4c4c4; font-size:1.6rem; }
 
         .submitBtn {
+            position: absolute;
             width: 100px;
             height: 30px;
+            border: none;
+            right: 400px;
+            bottom: 40px;
+            font-weight: bold;
+            background: #1d1d1d;
         }
 
         .custom-file {
             width: 516px;
             margin-bottom: 16px;
+            display: flex;
             align-items: center;
         }
 
-        .custom-file label, .custom-file input {
+        .custom-file label{
             display: block;
-            width: 200px;
+            width: 90px;
+            border: none;
+        }
+
+        .custom-file input{
+            display: block;
+            width: 180px;
         }
 
     </style>
@@ -149,9 +155,7 @@
 <div class="section">
     <div class="content">
         <form th:action="@{/security-login/registration}" method="post" enctype="multipart/form-data">
-            <div class="carTitle">
-                <h2><b>차량 등록</b></h2>
-            </div>
+
             <div class="contentBox">
                 <div class="contentInnerBox">
                     <label for="carName"><span>* </span>차량명:</label>
@@ -212,6 +216,7 @@
                 <div class="contentInnerBox">
                     <label for="carTransmission"><span>* </span>변속기:</label>
                     <select id="carTransmission" name="carTransmission" required>
+                        <option value="">변속기를 선택해주세요</option>
                         <option value="오토">오토</option>
                         <option value="수동">수동</option>
                         <option value="세미오토">세미오토</option>
@@ -285,29 +290,7 @@
                 </div>
                 <div class="contentInnerBox">
                     <label for="carOdometer"><span>* </span>주행거리:</label>
-                    <select id="carOdometer" name="carOdometer" required>
-                        <option value="">주행 거리를 선택해주세요</option>
-                        <option value="10000">10,000 km 이하</option>
-                        <option value="20000">20,000 km 이하</option>
-                        <option value="30000">30,000 km 이하</option>
-                        <option value="40000">40,000 km 이하</option>
-                        <option value="50000">50,000 km 이하</option>
-                        <option value="60000">60,000 km 이하</option>
-                        <option value="70000">70,000 km 이하</option>
-                        <option value="80000">80,000 km 이하</option>
-                        <option value="90000">90,000 km 이하</option>
-                        <option value="100000">10,000 km 이하</option>
-                        <option value="110000">11,000 km 이하</option>
-                        <option value="120000">12,000 km 이하</option>
-                        <option value="130000">13,000 km 이하</option>
-                        <option value="140000">14,000 km 이하</option>
-                        <option value="150000">15,000 km 이하</option>
-                        <option value="160000">16,000 km 이하</option>
-                        <option value="170000">17,000 km 이하</option>
-                        <option value="180000">18,000 km 이하</option>
-                        <option value="190000">19,000 km 이하</option>
-                        <option value="200000">20,000 km 이하</option>
-                    </select>
+                    <input type="carOdometer" placeholder="주행거리" id="carOdometer" name="carOdometer" required>
                 </div>
                 <div class="contentInnerBox">
                     <label for="carPrice"><span>* </span>금액:</label>
@@ -333,6 +316,11 @@
                         <option value="파워 스티어링 휠">파워 스티어링 휠</option>
                         <option value="파워 윈도우">파워 윈도우</option>
                     </select>
+                </div>
+                <div class="contentInnerBox">
+                    <label for="carAccidentHistory"><span>* </span>사고이력:</label>
+                    <input type="text" placeholder="사고 이력을 기재해주세요." id="carAccidentHistory" name="carAccidentHistory"
+                           required>
                 </div>
                 <div class="contentInnerBox">
                     <label for="carOpinion">사용자 의견:</label>

@@ -10,19 +10,28 @@ public class SearchCarDto {
 
     private  Long id;
 
+    private String carBrand;
+
     private String carName;
 
-    private String carOption;
+    private int carManufacturingDate;
+
+    private int carOdometer;
+
+    private String carFuelType;
 
     private String imgUrl;
 
     private Integer price;
 
     @QueryProjection
-    public SearchCarDto(Long id, String carName, String carOption, String imgUrl, Integer price) {
+    public SearchCarDto(Long id, String carBrand, String carName, int carManufacturingDate, int carOdometer, String carFuelType, String imgUrl, Integer price) {
         this.id = id;
+        this.carBrand = carBrand;
         this.carName = carName;
-        this.carOption = carOption;
+        this.carOdometer = carOdometer;
+        this.carManufacturingDate = carManufacturingDate;
+        this.carFuelType = carFuelType;
         this.imgUrl = imgUrl;
         this.price = price;
     }

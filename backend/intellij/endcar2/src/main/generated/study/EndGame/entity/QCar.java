@@ -7,6 +7,7 @@ import com.querydsl.core.types.dsl.*;
 import com.querydsl.core.types.PathMetadata;
 import javax.annotation.processing.Generated;
 import com.querydsl.core.types.Path;
+import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
@@ -21,11 +22,15 @@ public class QCar extends EntityPathBase<Car> {
 
     public final QBaseTimeEntity _super = new QBaseTimeEntity(this);
 
+    public final StringPath carAccidentHistory = createString("carAccidentHistory");
+
     public final StringPath carBrand = createString("carBrand");
 
     public final StringPath carColor = createString("carColor");
 
     public final StringPath carFuelType = createString("carFuelType");
+
+    public final ListPath<CarImg, QCarImg> carImages = this.<CarImg, QCarImg>createList("carImages", CarImg.class, QCarImg.class, PathInits.DIRECT2);
 
     public final NumberPath<Integer> carManufacturingDate = createNumber("carManufacturingDate", Integer.class);
 

@@ -24,7 +24,7 @@ public class QFileEntity extends EntityPathBase<FileEntity> {
 
     public final QBaseEntity _super = new QBaseEntity(this);
 
-    public final QCommunity community;
+    public final study.EndGame.community.QCommunity community;
 
     //inherited
     public final StringPath createdBy = _super.createdBy;
@@ -68,7 +68,7 @@ public class QFileEntity extends EntityPathBase<FileEntity> {
 
     public QFileEntity(Class<? extends FileEntity> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.community = inits.isInitialized("community") ? new QCommunity(forProperty("community")) : null;
+        this.community = inits.isInitialized("community") ? new study.EndGame.community.QCommunity(forProperty("community")) : null;
     }
 
 }

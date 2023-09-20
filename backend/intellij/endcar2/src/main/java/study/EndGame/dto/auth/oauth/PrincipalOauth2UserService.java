@@ -50,7 +50,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
         String providerId = oAuth2UserInfo.getProviderId();
         String email = oAuth2UserInfo.getEmail();
         String loginId = provider + "_" + providerId;
-        String nickname = oAuth2UserInfo.getName();
+        String name = oAuth2UserInfo.getName();
 
 
         Optional<User> optionalUser = userRepository.findByLoginId(loginId);
@@ -59,7 +59,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
         if(optionalUser.isEmpty()) {
             user = User.builder()
                     .loginId(loginId)
-                    .nickname(nickname)
+                    .name(name)
                     .provider(provider)
                     .providerId(providerId)
                     .role(UserRole.USER)

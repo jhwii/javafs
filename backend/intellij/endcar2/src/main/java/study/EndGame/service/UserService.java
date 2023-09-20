@@ -33,8 +33,8 @@ public class UserService {
      * 회원가입 기능 구현 시 사용
      * 중복되면 true return
      */
-    public boolean checkNicknameDuplicate(String nickname) {
-        return userRepository.existsByNickname(nickname);
+    public boolean checkNameDuplicate(String name) {
+        return userRepository.existsByName(name);
     }
 
     /**

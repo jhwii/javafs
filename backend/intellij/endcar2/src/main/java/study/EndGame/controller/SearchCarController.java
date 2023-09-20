@@ -8,15 +8,12 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import study.EndGame.dto.CarRegistrationDto;
 import study.EndGame.dto.CarSearchDto;
 import study.EndGame.dto.SearchCarDto;
-import study.EndGame.entity.Car;
 import study.EndGame.entity.User;
 import study.EndGame.service.UserService;
-import study.EndGame.service.car.CarService;
+import study.EndGame.service.CarService;
 
 import java.util.Optional;
 
@@ -33,7 +30,7 @@ public class SearchCarController {
         if(auth != null) {
             User loginUser = userService.getLoginUserByLoginId(auth.getName());
             if (loginUser != null) {
-                model.addAttribute("nickname", loginUser.getNickname());
+                model.addAttribute("name", loginUser.getName());
             }
         }
 
@@ -43,15 +40,9 @@ public class SearchCarController {
         model.addAttribute("carSearchDto", carSearchDto);
         model.addAttribute("maxPage", 5);
 
-        return "search/carSearch";
+        return "car/carSearch";
     }
 
-    @GetMapping(value = "/car/{carId}")
-    public String carDtl(Model model, @PathVariable("carId") Long carId){
-        CarRegistrationDto carRegistrationDto = carService.getCarDtl(carId);
-        model.addAttribute("car", carRegistrationDto);
-        return "car/carDtl";
-    }
 
 
 

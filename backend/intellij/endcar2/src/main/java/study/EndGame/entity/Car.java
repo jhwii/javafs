@@ -9,6 +9,8 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -21,6 +23,19 @@ public class Car extends BaseTimeEntity {
     @Column(name = "car_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @OneToMany(mappedBy = "car", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CarImg> carImages = new ArrayList<>();
+
+    public void addCarImage(CarImg carImg) {
+        carImages.add(carImg);
+        carImg.setCar(this);
+    }
+
+    public void removeCarImage(CarImg carImg) {
+        carImages.remove(carImg);
+        carImg.setCar(null);
+    }
 
     @Column(nullable = false)
     @NotBlank(message = "차량명을 입력해주세요.")
@@ -73,12 +88,15 @@ public class Car extends BaseTimeEntity {
     @Column(nullable = false)
     private String carOption;
 
+    @Column(nullable = false)
+    private String carAccidentHistory;
+
     @Lob
     @Column(nullable = false, columnDefinition = "TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci")
     private String carOpinion;
 
     @Column(nullable = false)
-    private int carStockNumber = 1;
+    private int carStockNumber;
 
     @Enumerated(EnumType.STRING)
     private CarSellStatus carSellStatus;
@@ -96,6 +114,7 @@ public class Car extends BaseTimeEntity {
         this.carManufacturingDate = carRegistrationDto.getCarManufacturingDate();
         this.carPrice = carRegistrationDto.getCarPrice();
         this.carOption = carRegistrationDto.getCarOption();
+        this.carAccidentHistory = carRegistrationDto.getCarAccidentHistory();
         this.carOpinion = carRegistrationDto.getCarOpinion();
         this.carStockNumber = carRegistrationDto.getCarStockNumber();
         this.carSellStatus = carRegistrationDto.createCar().getCarSellStatus();
