@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="|${pageName}|"></title>
+  <link th:href="@{/css/layout1.css}" rel="stylesheet">
+</head>
+
+<body>
+<div th:replace="~{fragments/header::header}"></div>
+<div layout:fragment="content">
+  <button onclick="saveReq()">글작성</button>
+  <a href="/security-login/community/save">글작성(링크)</a>
+  <button onclick="listReq()">글목록</button>
+  <button onclick="pagingReq()">페이징목록</button>
+
+</div>
+<div th:replace="~{fragments/footer::footer}"></div>
+
+</body>
+<script>
+
+
+  const saveReq = () => {
+    location.href = "/security-login/community/save";
+  }
+  const listReq = () => {
+    location.href = "/security-login/community/list";
+  }
+  const pagingReq = () => {
+    location.href = "/security-login/community/paging";
+  }
+
+
+</script>
+</html>

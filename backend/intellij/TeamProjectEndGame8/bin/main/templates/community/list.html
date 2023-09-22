@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="|${pageName}|"></title>
+    <link th:href="@{/css/layout1.css}" rel="stylesheet">
+</head>
+
+<body>
+<div th:replace="~{fragments/header::header}"></div>
+<div layout:fragment="content">
+    <table>
+        <tr>
+            <th>id</th>
+            <th>title</th>
+<!--            <th>title(||쓰지 않은 경우)</th>-->
+            <th>writer</th>
+            <th>date</th>
+            <th>hits</th>
+        </tr>
+        <tr th:each="community: ${communityList}">
+            <td th:text="${community.id}"></td>
+            <td><a th:href="@{|/security-login/community/${community.id}|}" th:text="${community.communityTitle}"></a></td>
+<!--            <td><a th:href="@{/community/${community.id}}" th:text="${community.communityTitle}"></a></td>-->
+            <td th:text="${community.communityWriter}"></td>
+            <td th:text="*{#temporals.format(community.communityCreatedTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+            <td th:text="${community.communityHits}"></td>
+        </tr>
+    </table>
+
+</div>
+<div th:replace="~{fragments/footer::footer}"></div>
+
+</body>
+</html>

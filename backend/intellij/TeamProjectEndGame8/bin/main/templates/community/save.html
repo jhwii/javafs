@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="|${pageName}|"></title>
+    <link th:href="@{/css/layout1.css}" rel="stylesheet">
+</head>
+
+<body>
+<div th:replace="~{fragments/header::header}"></div>
+<div layout:fragment="content">
+    <form action="/security-login/community/save" method="post" enctype="multipart/form-data">
+        writer: <input type="text" name="communityWriter"> <br>
+        pass: <input type="text" name="communityPass"> <br>
+        title: <input type="text" name="communityTitle"> <br>
+        contents: <textarea name="communityContents" cols="30" rows="10"></textarea> <br>
+        file: <input type="file" name="communityFile"> <br>
+        <input type="submit" value="글작성">
+    </form>
+
+</div>
+<div th:replace="~{fragments/footer::footer}"></div>
+
+</body>
+</html>
